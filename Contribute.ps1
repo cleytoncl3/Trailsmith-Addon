@@ -25,7 +25,7 @@ Write-Host 'O texto contem apenas numeros (mapa, item, x, y). A issue sera publi
 $ans = Read-Host 'Abrir agora? (S/N)'
 if ($ans -notmatch '^[sSyY]') { exit 0 }
 $body = "GatherTrail confirmation batch`n`n" + ($batch -join "`n")
-$url = 'https://github.com/cleytoncl3/GatherTrail/issues/new?title=' +
+$url = 'https://github.com/cleytoncl3/Trailsmith-Addon/issues/new?title=' +
     [uri]::EscapeDataString('GatherTrail confirmation') + '&body=' + [uri]::EscapeDataString($body)
 Start-Process $url
 Add-Content -Path $sentFile -Value $batch

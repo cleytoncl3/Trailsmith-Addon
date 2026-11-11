@@ -27,19 +27,19 @@ Trailsmith is a toolkit for **gathering and crafting**: a gathering guide for **
 
 ## Crafting simulator (on by default)
 
-A companion to the game's crafting window: it never replaces it and never crafts for you. Open it with its **own minimap icon**, the button in the General options tab, `/tsp`, or the **Simulation** button that appears next to the game's own crafting window. The K key and the game's crafting window stay exactly as they are.
+A companion to the game's crafting window: it never replaces it and never crafts for you. Open it with its **own minimap icon**, **Ctrl+K** (changeable in Settings), the button in the General options tab, `/tsp`, or the **Simulation** button that appears next to the game's own crafting window. The K key and the game's crafting window stay exactly as they are.
 
 - **Profession leveling**: choose a profession and a skill range (from 1 to 300, or from your current skill) and get a step-by-step plan: which recipe to craft, how many times, the materials, what to buy at market price, what the crafted items sell for, and the profit or loss. Three modes: cheapest, best profit, fewest crafts. Recipes you still have to learn show a **Find trainer** button that marks the nearest trainer on the world map.
 - **Simulator**: pick any recipe and a quantity. You get the full step-by-step (including intermediate items such as bars, which can come from a profession you have), a shopping list with prices, the total cost, the sale value and the profit or loss. It can use what you already have in your bags.
 - **Pin to screen**: a small movable list like a quest tracker. Items turn green when you have them, and raw materials are shown for items you still have to craft.
 - **Open the game's crafting window** buttons open the real profession window for the recipe; the game does the crafting.
 - **Prices** come from Auctionator, TradeSkillMaster or Auctioneer (picked automatically, or choose in Settings), with vendor values as a fallback. You can count raw materials as free if you gather them yourself.
-- Four tabs: Profession leveling, Simulator, Gathering and Settings. Resizable window, text that scales with it, English, Spanish and Portuguese.
+- Tabs: Profession leveling, Simulator, Gathering (guide and advanced options), Combat Tutor and Settings. Resizable window, text that scales with it, English, Spanish and Portuguese.
 - The recipe database (about 2,500 recipes) is built from public data (see Credits). Skill-up odds are estimates, and a few recipe requirements are estimated too.
 
 ## Combat Tutor (optional module, off by default)
 
-Trailsmith also bundles **Combat Tutor** (formerly the MVAT addon). Turn it on in the **Combat** tab of the options.
+Trailsmith also bundles **Combat Tutor** (formerly the MVAT addon). Turn it on in the **Combat Tutor** tab.
 
 - One floating icon shows the ability to use **right now**, with your key binding: emergency, interrupt, dispel, heal, taunt, procs and combos, AoE and missing buffs, for all 9 Classic classes.
 - Extra panels: what the enemy is casting, boss warnings, group debuffs you can remove, and the next abilities in the queue.

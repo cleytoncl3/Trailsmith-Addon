@@ -1124,25 +1124,13 @@ local function ItemName(id)
     return n
 end
 
-local function BuildOptions()
+-- The options live inside the Trailsmith window (Gathering > Advanced options): they are built into a host frame.
+local function BuildOptions(host)
     if options then return options end
-    local f = TryCreate("Frame", "GatherTrailOptions", UIParent, { "BasicFrameTemplateWithInset", "DialogBoxFrame" })
-    f:SetSize(db.optW or 440, db.optH or 590)
-    f:SetResizable(true)
-    if f.SetResizeBounds then f:SetResizeBounds(400, 420, 900, 900)
-    elseif f.SetMinResize then f:SetMinResize(400, 420) end
-    f:SetPoint("LEFT", UIParent, "LEFT", 60, 0)
-    f:SetMovable(true)
-    f:EnableMouse(true)
-    f:RegisterForDrag("LeftButton")
-    f:SetScript("OnDragStart", f.StartMoving)
-    f:SetScript("OnDragStop", f.StopMovingOrSizing)
-    f:SetFrameStrata("DIALOG")
-    local title = f:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    title:SetPoint("TOP", 0, -8)
-    title:SetText(L.OPT_TITLE)
+    if not host then return nil end
+    local f = CreateFrame("Frame", nil, host)
+    f:SetAllPoints(host)
     f:Hide()
-    tinsert(UISpecialFrames, "GatherTrailOptions")
 
     local refreshers, nameUpdaters = {}, {}
     local fixw = {} -- { fontstring, margem }: largura = largura da janela - margem
@@ -1150,8 +1138,8 @@ local function BuildOptions()
 
     local function NewPage()
         local p = CreateFrame("Frame", nil, f)
-        p:SetPoint("TOPLEFT", 14, -66)
-        p:SetPoint("BOTTOMRIGHT", -14, 14)
+        p:SetPoint("TOPLEFT", 10, -40)
+        p:SetPoint("BOTTOMRIGHT", -10, 10)
         p:Hide()
         p.y = 0
         return p
@@ -1228,7 +1216,7 @@ local function BuildOptions()
         return b
     end
 
-    local pages = { general = NewPage(), display = NewPage(), nodes = NewPage(), tutor = NewPage() }
+    local pages = { general = NewPage(), display = NewPage(), nodes = NewPage() }
 
     ---------------------------------------------------------- Geral
     local g = pages.general
@@ -1457,36 +1445,6 @@ local function BuildOptions()
         f:Refresh()
     end)
 
-    ---------------------------------------------------------- Combat Tutor
-    local t = pages.tutor
-    Check(t, L.OPT_TUTOR, "combatTutor", function()
-        if db.combatTutor then
-            if StartTutor() then Print(L.TUTOR_ON) end
-            if _G.MVAT_DB then _G.MVAT_DB.enabled = true end
-        else
-            if _G.MVAT_DB then _G.MVAT_DB.enabled = false end
-            Print(L.TUTOR_RELOAD)
-        end
-        f:Refresh()
-    end)
-    t.y = t.y - 6
-    local tinfo = t:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    tinfo:SetPoint("TOPLEFT", 4, t.y)
-    tinfo:SetWidth(390)
-    tinfo:SetJustifyH("LEFT")
-    tinfo:SetText(L.TUTOR_INFO)
-    fixw[#fixw + 1] = { tinfo, 36 }
-    local tOpen = Button(t, L.BTN_TUTOR_OPEN, 220)
-    tOpen:SetPoint("BOTTOMLEFT", 4, 4)
-    tOpen:SetScript("OnClick", function()
-        if StartTutor() or tutorStarted then
-            if _G.SlashCmdList and _G.SlashCmdList.MVAT then _G.SlashCmdList.MVAT("") end
-        else
-            Print(L.TUTOR_OFF)
-        end
-    end)
-    f.tutorOpen = tOpen
-
     ---------------------------------------------------------- redimensionar
     local function Resize()
         local w = f:GetWidth()
@@ -1497,22 +1455,9 @@ local function BuildOptions()
     end
     f:SetScript("OnSizeChanged", Resize)
 
-    local grip = CreateFrame("Button", nil, f)
-    grip:SetSize(16, 16)
-    grip:SetPoint("BOTTOMRIGHT", -4, 4)
-    grip:SetFrameLevel(f:GetFrameLevel() + 20)
-    grip:SetNormalTexture("Interface/ChatFrame/UI-ChatIM-SizeGrabber-Up")
-    grip:SetPushedTexture("Interface/ChatFrame/UI-ChatIM-SizeGrabber-Down")
-    grip:SetHighlightTexture("Interface/ChatFrame/UI-ChatIM-SizeGrabber-Highlight")
-    grip:SetScript("OnMouseDown", function() f:StartSizing("BOTTOMRIGHT") end)
-    grip:SetScript("OnMouseUp", function()
-        f:StopMovingOrSizing()
-        db.optW, db.optH = floor(f:GetWidth()), floor(f:GetHeight())
-    end)
-
     ---------------------------------------------------------- abas
     local tabBtns = {}
-    local order = { { "general", L.TAB_GENERAL }, { "display", L.TAB_DISPLAY }, { "nodes", L.TAB_NODES }, { "tutor", L.TAB_TUTOR } }
+    local order = { { "general", L.TAB_GENERAL }, { "display", L.TAB_DISPLAY }, { "nodes", L.TAB_NODES } }
     local function ShowTab(id)
         for key, page in pairs(pages) do
             if key == id then page:Show() else page:Hide() end
@@ -1524,7 +1469,7 @@ local function BuildOptions()
     end
     for i, def in ipairs(order) do
         local b = Button(f, def[2], 100)
-        b:SetPoint("TOPLEFT", 16 + (i - 1) * 104, -34)
+        b:SetPoint("TOPLEFT", 6 + (i - 1) * 104, -6)
         b:SetScript("OnClick", function() ShowTab(def[1]) end)
         tabBtns[def[1]] = b
     end
@@ -1538,9 +1483,6 @@ local function BuildOptions()
         local function sk(k)
             return skills[k].known and L.HAS_SKILL:format(skills[k].skill) or (skills[k].has and "?" or L.NO_SKILL)
         end
-        if f.tutorOpen then
-            if db.combatTutor then f.tutorOpen:Enable() else f.tutorOpen:Disable() end
-        end
         info:SetText(L.INFO:format(#db.nodes, sk("mine"), sk("herb"), sk("skin")))
         f.RefreshNames()
         f.UpdatePrices()
@@ -1553,10 +1495,29 @@ local function BuildOptions()
 end
 
 local function ToggleOptions()
-    local f = BuildOptions()
-    if f:IsShown() then f:Hide() else f:Show() end
+    if ns.OpenProf then ns.OpenProf(nil, "gather", "advanced") end
 end
 ns.ToggleOptions = ToggleOptions
+ns.BuildOptionsHost = BuildOptions
+
+-- Combat Tutor switches used by the Combat Tutor tab of the Trailsmith window
+ns.SetTutor = function(on)
+    db.combatTutor = on and true or false
+    if db.combatTutor then
+        if StartTutor() then Print(L.TUTOR_ON) end
+        if _G.MVAT_DB then _G.MVAT_DB.enabled = true end
+    else
+        if _G.MVAT_DB then _G.MVAT_DB.enabled = false end
+        Print(L.TUTOR_RELOAD)
+    end
+end
+ns.OpenTutor = function()
+    if StartTutor() or tutorStarted then
+        if _G.SlashCmdList and _G.SlashCmdList.MVAT then _G.SlashCmdList.MVAT("") end
+    else
+        Print(L.TUTOR_OFF)
+    end
+end
 ns.GatherDirty = function() cacheAt = 0 worldDirty = true end
 
 ---------------------------------------------------------------- botao do minimapa
@@ -1644,10 +1605,7 @@ end
 SLASH_MVAT1, SLASH_MVAT2 = "/mvat", "/tutor"
 SlashCmdList.MVAT = function()
     Print(L.TUTOR_OFF)
-    local f = BuildOptions()
-    db.lastTab = "tutor"
-    f:Show()
-    if f.Refresh then f:Refresh() end
+    if ns.OpenProf then ns.OpenProf(nil, "tutor") end
 end
 
 SLASH_GATHERTRAIL1 = "/gt"

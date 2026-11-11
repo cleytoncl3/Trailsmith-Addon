@@ -13,7 +13,7 @@ LOC.en = {
     KEY_NOTE = "If you pick a key that already does something, the old action moves to Shift + that key.", KEY_PRESS = "Press a key... (Esc cancels)", KEY_BTN = "Key: %s (click to change)", BTN_BLIZZ = "Blizzard's window",
     GATHER_TITLE = "Gathering guide", GATHER_INFO = "Trailsmith points to the nearest ore and herb you can gather and draws it on the minimap and world map. More options (resources, display, filters) are in the full options.",
     G_ENABLED = "Gathering guide enabled", G_MINE = "Track ore (Mining)", G_HERB = "Track herbs (Herbalism)", G_SEED = "Use the seed database", G_AUTOLOOT = "Gathering autoloot",
-    G_AUTOLOOTQ = "Quest and gold autoloot", G_AUTOHIDE = "Auto-hide empty points", G_HOVER = "Learn nodes when hovering the minimap", G_RANGE = "Range", BTN_FULLOPT = "Open full options",
+    G_AUTOLOOTQ = "Quest and gold autoloot", G_AUTOHIDE = "Auto-hide empty points", G_HOVER = "Learn nodes when hovering the minimap", G_RANGE = "Range", BTN_FULLOPT = "Open advanced options",
     CRAFTOPT = "Crafting options", MODE_TITLE = "Plan mode", SRC_TITLE = "Recipe sources", PRICE_TITLE = "Prices",
     OPT_AUTOTEXT = "Scale text with the window size", BTN_RESETSIZE = "Reset window size and text",
     GO_TRAINER = "Find trainer", GO_VENDOR = "Find vendor", FOOT_REQ = "Requires: %s", FOOT_NOREQ = "No special tool or station needed", FOOT_HAVE = "have %d",
@@ -28,6 +28,7 @@ LOC.en = {
     MATS_TOTAL = "Total materials for the whole plan", TRACK_OPEN = "Open crafting", OPT_MM = "Show the simulator icon on the minimap",
     MM_TIP = "Click: open the crafting simulator. Drag: move.",
     KEY_CONFLICT = "That key already does %s in the game. While this option is on, the simulator takes it over. Use another key or switch it off; the minimap icon always works.",
+    G_GUIDE = "Gathering guide", G_ADV = "Advanced options", TAB_TUTOR = "Combat Tutor",
     TITLE = "Trailsmith Professions", PLAN = "Plan", MATS = "Materials", RECIPES = "Recipes", SETTINGS = "Settings",
     FROM = "From", TO = "To", MYSKILL = "My skill", MAXSKILL = "Max",
     MODE_CHEAP = "Cheapest", MODE_PROFIT = "Best profit", MODE_FAST = "Fewest crafts",
@@ -57,7 +58,7 @@ LOC.es = {
     KEY_NOTE = "Si eliges una tecla que ya hace algo, la acción original pasa a Mayús + esa tecla.", KEY_PRESS = "Pulsa una tecla... (Esc cancela)", KEY_BTN = "Tecla: %s (clic para cambiar)", BTN_BLIZZ = "Ventana de Blizzard",
     GATHER_TITLE = "Guía de recolección", GATHER_INFO = "Trailsmith señala el mineral y la hierba más cercanos que puedes recolectar y los dibuja en el minimapa y el mapa del mundo. Más opciones (recursos, visualización, filtros) en las opciones completas.",
     G_ENABLED = "Guía de recolección activada", G_MINE = "Rastrear minerales (Minería)", G_HERB = "Rastrear hierbas (Herboristería)", G_SEED = "Usar la base de datos inicial", G_AUTOLOOT = "Autobotín de recolección",
-    G_AUTOLOOTQ = "Autobotín de misión y oro", G_AUTOHIDE = "Ocultar puntos vacíos automáticamente", G_HOVER = "Aprender nodos al pasar por el minimapa", G_RANGE = "Alcance", BTN_FULLOPT = "Abrir opciones completas",
+    G_AUTOLOOTQ = "Autobotín de misión y oro", G_AUTOHIDE = "Ocultar puntos vacíos automáticamente", G_HOVER = "Aprender nodos al pasar por el minimapa", G_RANGE = "Alcance", BTN_FULLOPT = "Abrir opciones avanzadas",
     CRAFTOPT = "Opciones de fabricación", MODE_TITLE = "Modo del plan", SRC_TITLE = "Fuentes de recetas", PRICE_TITLE = "Precios",
     OPT_AUTOTEXT = "Escalar el texto con el tamaño de la ventana", BTN_RESETSIZE = "Restablecer tamaño de ventana y texto",
     GO_TRAINER = "Buscar instructor", GO_VENDOR = "Buscar vendedor", FOOT_REQ = "Requiere: %s", FOOT_NOREQ = "No necesita herramienta ni estación", FOOT_HAVE = "tienes %d",
@@ -72,6 +73,7 @@ LOC.es = {
     MATS_TOTAL = "Materiales totales de todo el plan", TRACK_OPEN = "Abrir creación", OPT_MM = "Mostrar el icono del simulador en el minimapa",
     MM_TIP = "Clic: abrir el simulador de creación. Arrastrar: mover.",
     KEY_CONFLICT = "Esa tecla ya hace %s en el juego. Mientras esta opción esté activa, el simulador la reemplaza. Usa otra tecla o desactívala; el icono del minimapa siempre funciona.",
+    G_GUIDE = "Guía de recolección", G_ADV = "Opciones avanzadas", TAB_TUTOR = "Combat Tutor",
     TITLE = "Trailsmith Profesiones", PLAN = "Plan", MATS = "Materiales", RECIPES = "Recetas", SETTINGS = "Ajustes",
     FROM = "Desde", TO = "Hasta", MYSKILL = "Mi nivel", MAXSKILL = "Máx.",
     MODE_CHEAP = "Más barato", MODE_PROFIT = "Mayor beneficio", MODE_FAST = "Menos creaciones",
@@ -101,7 +103,7 @@ LOC.pt = {
     KEY_NOTE = "Se você escolher uma tecla que já faz algo, a ação original passa para Shift + essa tecla.", KEY_PRESS = "Aperte uma tecla... (Esc cancela)", KEY_BTN = "Tecla: %s (clique para trocar)", BTN_BLIZZ = "Janela da Blizzard",
     GATHER_TITLE = "Guia de coleta", GATHER_INFO = "O Trailsmith aponta o minério e a erva mais próximos que você consegue coletar e desenha no minimapa e no mapa-múndi. Mais opções (recursos, exibição, filtros) estão nas opções completas.",
     G_ENABLED = "Guia de coleta ligado", G_MINE = "Rastrear minérios (Mineração)", G_HERB = "Rastrear ervas (Herborismo)", G_SEED = "Usar o banco de dados inicial", G_AUTOLOOT = "Autosaque de coleta",
-    G_AUTOLOOTQ = "Autosaque de missão e ouro", G_AUTOHIDE = "Esconder pontos vazios automaticamente", G_HOVER = "Aprender pontos ao passar o mouse no minimapa", G_RANGE = "Alcance", BTN_FULLOPT = "Abrir opções completas",
+    G_AUTOLOOTQ = "Autosaque de missão e ouro", G_AUTOHIDE = "Esconder pontos vazios automaticamente", G_HOVER = "Aprender pontos ao passar o mouse no minimapa", G_RANGE = "Alcance", BTN_FULLOPT = "Abrir opções avançadas",
     CRAFTOPT = "Opções de criação", MODE_TITLE = "Modo do plano", SRC_TITLE = "Fontes de receitas", PRICE_TITLE = "Preços",
     OPT_AUTOTEXT = "Escalar o texto com o tamanho da janela", BTN_RESETSIZE = "Restaurar tamanho da janela e do texto",
     GO_TRAINER = "Localizar treinador", GO_VENDOR = "Localizar vendedor", FOOT_REQ = "Requer: %s", FOOT_NOREQ = "Não precisa de ferramenta nem estação", FOOT_HAVE = "tem %d",
@@ -116,6 +118,7 @@ LOC.pt = {
     MATS_TOTAL = "Total de materiais de todo o plano", TRACK_OPEN = "Abrir criação", OPT_MM = "Mostrar o ícone do simulador no minimapa",
     MM_TIP = "Clique: abrir o simulador de crafting. Arraste: mover.",
     KEY_CONFLICT = "Essa tecla já faz %s no jogo. Enquanto esta opção estiver ligada, o simulador a substitui. Use outra tecla ou desligue; o ícone do minimapa sempre funciona.",
+    G_GUIDE = "Guia de coleta", G_ADV = "Opções avançadas", TAB_TUTOR = "Combat Tutor",
     TITLE = "Trailsmith Profissões", PLAN = "Plano", MATS = "Materiais", RECIPES = "Receitas", SETTINGS = "Opções",
     FROM = "De", TO = "Até", MYSKILL = "Minha perícia", MAXSKILL = "Máx.",
     MODE_CHEAP = "Mais barato", MODE_PROFIT = "Maior lucro", MODE_FAST = "Menos criações",
@@ -1835,12 +1838,23 @@ function UI:Refresh()
     self.craftPane:SetShown(top == "craft")
     self.simPane:SetShown(top == "sim")
     self.gatherPane:SetShown(top == "gather")
+    self.tutorPane:SetShown(top == "tutor")
     self.setPane:SetShown(top == "settings")
     if top == "gather" then
-        self.gatherStack:Layout()
-        local m, h = skills.mining, skills.herbalism
-        self.gatherSkill:SetText(("%s: %s     %s: %s"):format(ProfLabel("mining"), m and (m.rank .. "/" .. m.max) or "—",
-            ProfLabel("herbalism"), h and (h.rank .. "/" .. h.max) or "—"))
+        local adv = (self.gatherSub == "advanced")
+        for _, b in ipairs(self.gatherBtns) do SetSel(b, b.sub == self.gatherSub) end
+        self.guideHost:SetShown(not adv)
+        self.advHost:SetShown(adv)
+        if adv then
+            self:ShowAdvanced()
+        else
+            self.gatherStack:Layout()
+            local m, h = skills.mining, skills.herbalism
+            self.gatherSkill:SetText(("%s: %s     %s: %s"):format(ProfLabel("mining"), m and (m.rank .. "/" .. m.max) or "—",
+                ProfLabel("herbalism"), h and (h.rank .. "/" .. h.max) or "—"))
+        end
+    elseif top == "tutor" then
+        self.tutorStack:Layout()
     elseif top == "settings" then
         self.setStack:Layout()
     end
@@ -2304,18 +2318,36 @@ function UI:BuildSim(f)
 end
 
 function UI:BuildGather(pane)
-    local st = NewStack(pane, 12, 10, 600)
+    self.gatherSub = "guide"
+    self.gatherBtns = {}
+    for i, tdef in ipairs({ { "guide", S.G_GUIDE }, { "advanced", S.G_ADV } }) do
+        local b = Btn(pane, tdef[2], 180, 24, function() UI.gatherSub = tdef[1] UI:Refresh() end)
+        b:SetPoint("TOPLEFT", 8 + (i - 1) * 186, -8)
+        b.sub = tdef[1]
+        self.gatherBtns[i] = b
+    end
+    local g = CreateFrame("Frame", nil, pane)
+    g:SetPoint("TOPLEFT", 0, -40)
+    g:SetPoint("BOTTOMRIGHT", 0, 0)
+    self.guideHost = g
+    local adv = CreateFrame("Frame", nil, pane)
+    adv:SetPoint("TOPLEFT", 4, -40)
+    adv:SetPoint("BOTTOMRIGHT", -4, 4)
+    adv:Hide()
+    self.advHost = adv
+
+    local st = NewStack(g, 12, 8, 600)
     self.gatherStack = st
-    st:Add(Label(pane, S.GATHER_TITLE, "GameFontNormalLarge"), 22, 0, 4)
-    local info = Label(pane, S.GATHER_INFO, "GameFontHighlightSmall")
+    st:Add(Label(g, S.GATHER_TITLE, "GameFontNormalLarge"), 22, 0, 4)
+    local info = Label(g, S.GATHER_INFO, "GameFontHighlightSmall")
     info:SetTextColor(0.75, 0.75, 0.75)
     info:SetJustifyV("TOP")
     st:Add(info, 44, 0, 4, true)
-    self.gatherSkill = Label(pane, "", "GameFontHighlight", "num")
+    self.gatherSkill = Label(g, "", "GameFontHighlight", "num")
     st:Add(self.gatherSkill, 18, 0, 10)
     local function Chk(label, key)
-        local cb = Check(pane, label, function() local g = _G.GatherTrailDB return g and g[key] end,
-            function(v) local g = _G.GatherTrailDB if g then g[key] = v end Log("gathering option %s = %s", key, tostring(v)) if ns.GatherDirty then ns.GatherDirty() end end)
+        local cb = Check(g, label, function() local d = _G.GatherTrailDB return d and d[key] end,
+            function(v) local d = _G.GatherTrailDB if d then d[key] = v end Log("gathering option %s = %s", key, tostring(v)) if ns.GatherDirty then ns.GatherDirty() end end)
         st:Add(cb, 26, 0, 0)
     end
     Chk(S.G_ENABLED, "enabled")
@@ -2326,12 +2358,39 @@ function UI:BuildGather(pane)
     Chk(S.G_AUTOLOOTQ, "autoLootQuest")
     Chk(S.G_AUTOHIDE, "autoHide")
     Chk(S.G_HOVER, "hoverLearn")
-    local rg = Slider(pane, S.G_RANGE, 50, 2000, 50, function() local g = _G.GatherTrailDB return g and g.range or 600 end,
-        function(v) local g = _G.GatherTrailDB if g then g.range = v end Log("gathering option range = %s", tostring(v)) if ns.GatherDirty then ns.GatherDirty() end end,
+    local rg = Slider(g, S.G_RANGE, 50, 2000, 50, function() local d = _G.GatherTrailDB return d and d.range or 600 end,
+        function(v) local d = _G.GatherTrailDB if d then d.range = v end Log("gathering option range = %s", tostring(v)) if ns.GatherDirty then ns.GatherDirty() end end,
         function(v) return v .. " yd" end)
     st:Add(rg, 40, 0, 12)
-    st:Add(Btn(pane, S.BTN_FULLOPT, 220, 24, function() if ns.ToggleOptions then ns.ToggleOptions() end end), 24, 0, 0)
+    st:Add(Btn(g, S.BTN_FULLOPT, 240, 24, function() UI.gatherSub = "advanced" UI:Refresh() end), 24, 0, 0)
     rg:SetWidth(360)
+end
+
+function UI:ShowAdvanced()
+    if not self.advOpts and ns.BuildOptionsHost then
+        local ok, res = pcall(ns.BuildOptionsHost, self.advHost)
+        if ok then self.advOpts = res else Log("ERROR building the advanced options: %s", tostring(res)) end
+    end
+    if self.advOpts then self.advOpts:Show() end
+end
+
+function UI:BuildTutor(pane)
+    local TL = ns.L or {}
+    local st = NewStack(pane, 12, 10, 600)
+    self.tutorStack = st
+    st:Add(Label(pane, S.TAB_TUTOR, "GameFontNormalLarge"), 22, 0, 8)
+    st:Add(Check(pane, TL.OPT_TUTOR or "Enable Combat Tutor", function() local d = _G.GatherTrailDB return d and d.combatTutor end,
+        function(v) if ns.SetTutor then ns.SetTutor(v) end Log("combat tutor = %s", tostring(v)) UI:Refresh() end), 26, 0, 8)
+    local info = Label(pane, TL.TUTOR_INFO or "", "GameFontHighlightSmall")
+    info:SetTextColor(0.8, 0.8, 0.8)
+    info:SetJustifyV("TOP")
+    st:Add(info, 70, 4, 10, true)
+    self.tutorOpenBtn = Btn(pane, TL.BTN_TUTOR_OPEN or "Open Combat Tutor options", 260, 24, function() if ns.OpenTutor then ns.OpenTutor() end end)
+    st:Add(self.tutorOpenBtn, 24, 0, 0)
+    self.syncs[#self.syncs + 1] = function()
+        local d = _G.GatherTrailDB
+        if d and d.combatTutor then self.tutorOpenBtn:Enable() else self.tutorOpenBtn:Disable() end
+    end
 end
 
 function UI:BuildSettings(pane)
@@ -2424,9 +2483,9 @@ function UI:Build()
 
     -- top tabs
     self.topBtns = {}
-    for i, t in ipairs({ { "craft", S.TAB_LEVEL }, { "sim", S.TAB_SIM }, { "gather", S.TAB_GATHER }, { "settings", S.SETTINGS } }) do
-        local b = Btn(f, t[2], 150, 24, function() UI.top = t[1] UI:Refresh() end)
-        b:SetPoint("TOPLEFT", M + (i - 1) * 154, -34)
+    for i, t in ipairs({ { "craft", S.TAB_LEVEL }, { "sim", S.TAB_SIM }, { "gather", S.TAB_GATHER }, { "tutor", S.TAB_TUTOR }, { "settings", S.SETTINGS } }) do
+        local b = Btn(f, t[2], 120, 24, function() UI.top = t[1] UI:Refresh() end)
+        b:SetPoint("TOPLEFT", M + (i - 1) * 122, -34)
         b.top = t[1]
         self.topBtns[i] = b
     end
@@ -2439,8 +2498,9 @@ function UI:Build()
         p:Hide()
         return p
     end
-    self.gatherPane, self.setPane = Pane(), Pane()
+    self.gatherPane, self.tutorPane, self.setPane = Pane(), Pane(), Pane()
     self:BuildGather(self.gatherPane)
+    self:BuildTutor(self.tutorPane)
     self:BuildSettings(self.setPane)
     self:BuildSearch()
 
@@ -2499,12 +2559,13 @@ local function Setup()
     return true
 end
 
-function ns.OpenProf(arg, top)
+function ns.OpenProf(arg, top, sub)
     if not P and not Setup() then return end
     Log("open/toggle window arg=%s top=%s", tostring(arg), tostring(top))
     if not UI.frame then UI:Build() end
     if top then
         UI.top = top
+        if sub then UI.gatherSub = sub end
         UI.frame:Show()
         UI:Refresh()
         return

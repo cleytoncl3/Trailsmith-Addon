@@ -4,17 +4,22 @@ A toolkit for gatherers and more: a gathering guide for **Mining** and **Herbali
 
 The full feature description, FAQ and commands are in [CURSEFORGE.md](CURSEFORGE.md) (the text used on the CurseForge page).
 
-## Install
+## Download and install
 
-- **CurseForge:** install **Trailsmith** and **GatherTrailData** (optional starter database).
-- **Manually:** copy the `Trailsmith` folder to `Interface/AddOns`. For the starter database also copy [GatherTrailData](https://github.com/cleytoncl3/GatherTrailData) next to it.
-- **Update without git:** run `Update.bat` in the addon folder (it downloads the latest version of this repository).
+- **Latest release (zip):** https://github.com/cleytoncl3/Trailsmith-Addon/releases/latest
+  Unzip it into `World of Warcraft_forever_InterfaceAddOns` so you end up with an `AddOnsTrailsmith` folder. The release also has an optional `GatherTrailData.zip` (starter node database) that goes next to it.
+- **Update with one click:** run `Update.bat` inside the `Trailsmith` folder. It downloads the latest version from this repository (and updates GatherTrailData if it is installed), no git or browser needed. Close the game first or `/reload` afterwards. Your settings are not touched.
+- **CurseForge:** install **Trailsmith** (and optionally **GatherTrailData**) once the pages are approved.
 
-Languages: English, Spanish and Portuguese, chosen from the game language.
+Open the window with the minimap icon, `/tsp`, `/gt` or Ctrl+K (changeable). Languages: English, Spanish and Portuguese, chosen from the game language.
 
-## Profession planner
+## Windows and tabs
 
-Open with `/tsp` or `/gt prof`. It builds a skill-by-skill leveling plan for every crafting profession, with materials, prices (Auctionator, TradeSkillMaster or Auctioneer) and three modes (cheapest, best profit, fewest crafts). Details in [CURSEFORGE.md](CURSEFORGE.md#profession-planner-on-by-default).
+Profession leveling, Simulator, Gathering (guide + advanced options), Combat Tutor and Settings. See [CURSEFORGE.md](CURSEFORGE.md) for the full feature text.
+
+## Crafting simulator
+
+A companion to the game's crafting window (it never replaces it): leveling plans for every crafting profession, an item simulator with the full step-by-step, shopping list and profit or loss, a pinned tracker, and buttons that open the game's own crafting window. Prices from Auctionator, TradeSkillMaster or Auctioneer. Details in [CURSEFORGE.md](CURSEFORGE.md#crafting-simulator-on-by-default).
 
 ### Data sources
 
@@ -29,7 +34,7 @@ Recipes whose source could not be matched use an estimated requirement. To regen
 
 ## Combat Tutor module
 
-The former MVAT addon is included as an optional module (off by default). Enable it in the **Combat** tab. It only draws information and never acts for your character. See [CURSEFORGE.md](CURSEFORGE.md#combat-tutor-optional-module-off-by-default). If you still have the standalone `MVAT` folder, delete it so the two do not clash.
+The former MVAT addon is included as an optional module (off by default). Enable it in the **Combat Tutor** tab of the window. It only draws information and never acts for your character. See [CURSEFORGE.md](CURSEFORGE.md#combat-tutor-optional-module-off-by-default). If you still have the standalone `MVAT` folder, delete it so the two do not clash.
 
 ## How nodes are found
 

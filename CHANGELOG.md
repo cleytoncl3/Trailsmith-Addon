@@ -1,5 +1,11 @@
 # Trailsmith
 
+## 1.5.0
+- **Gathering** tab now has two sub-tabs: **Gathering guide** (quick switches) and **Advanced options** with every Trailsmith option (General, Display, Resources with per-resource filter and prices). The separate options window is gone; the Trailsmith minimap button opens this tab.
+- **Combat Tutor** has its own tab next to Gathering (it was inside the Trailsmith options). Still off by default.
+- `Update.bat` points to the new repository and also updates GatherTrailData when it is installed next to the addon.
+- New home: github.com/cleytoncl3/Trailsmith-Addon.
+
 ## 1.4.2
 - **K is yours again.** A bug kept the old K takeover alive for people who had used an earlier version. The simulator now opens with **Ctrl+K** (changeable or removable in Settings, with a warning when the key already does something). Plain K opens the game's own window.
 - The game's crafting window no longer opens behind the simulator (the simulator sits on the same layer and the game window is raised when it opens). The pinned tracker stays on top.
