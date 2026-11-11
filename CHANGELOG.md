@@ -1,5 +1,8 @@
 # Trailsmith
 
+## 1.5.1
+- Skinning, Herbalism and Fishing no longer show a dead end. Each has a page that explains what it feeds (Skinning -> Leatherworking, Herbalism -> Alchemy, Fishing -> Cooking), with buttons that open that profession's leveling plan or simulator. Skinning shows a progression guide (which creature levels to skin at each skill range, which leather you get and how many recipes use it); Herbalism lists every herb with the skill to pick it and how many recipes use it.
+
 ## 1.5.0
 - **Gathering** tab now has two sub-tabs: **Gathering guide** (quick switches) and **Advanced options** with every Trailsmith option (General, Display, Resources with per-resource filter and prices). The separate options window is gone; the Trailsmith minimap button opens this tab.
 - **Combat Tutor** has its own tab next to Gathering (it was inside the Trailsmith options). Still off by default.

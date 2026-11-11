@@ -29,6 +29,11 @@ LOC.en = {
     MM_TIP = "Click: open the crafting simulator. Drag: move.",
     KEY_CONFLICT = "That key already does %s in the game. While this option is on, the simulator takes it over. Use another key or switch it off; the minimap icon always works.",
     G_GUIDE = "Gathering guide", G_ADV = "Advanced options", TAB_TUTOR = "Combat Tutor",
+    INFO_SKINNING = "Skinning has no crafting recipes of its own. You skin beasts to get leather and hides, which Leatherworking (and a few other professions) turn into gear and materials. Use the buttons to plan the crafts that use your leather. The list is a leveling guide: skin creatures of the level shown for each skill range (a creature needs about 5 skill points per level).",
+    INFO_HERBALISM = "Herbalism has no crafting recipes of its own. The herbs you pick are used mostly by Alchemy (and a few other professions). Use the buttons to plan Alchemy. The list shows each herb, the skill needed to pick it and how many recipes use it.",
+    INFO_FISHING = "Fishing has no crafting recipes of its own. The fish you catch are used mostly by Cooking. Use the buttons to plan Cooking.",
+    INFO_OPEN = "Open %s leveling", INFO_SIM = "Open %s simulator", INFO_TIER = "Skill %d-%d: skin creatures of level %d-%d", INFO_HERBS = "Herbs by skill needed",
+    INFO_SKILL = "skill %d", INFO_USES = "used in %d recipes: %s", INFO_NOUSES = "not used in any recipe of the database",
     TITLE = "Trailsmith Professions", PLAN = "Plan", MATS = "Materials", RECIPES = "Recipes", SETTINGS = "Settings",
     FROM = "From", TO = "To", MYSKILL = "My skill", MAXSKILL = "Max",
     MODE_CHEAP = "Cheapest", MODE_PROFIT = "Best profit", MODE_FAST = "Fewest crafts",
@@ -74,6 +79,11 @@ LOC.es = {
     MM_TIP = "Clic: abrir el simulador de creación. Arrastrar: mover.",
     KEY_CONFLICT = "Esa tecla ya hace %s en el juego. Mientras esta opción esté activa, el simulador la reemplaza. Usa otra tecla o desactívala; el icono del minimapa siempre funciona.",
     G_GUIDE = "Guía de recolección", G_ADV = "Opciones avanzadas", TAB_TUTOR = "Combat Tutor",
+    INFO_SKINNING = "Desuello no tiene recetas de creación propias. Desuellas bestias para obtener cuero y pieles, que Peletería (y algunas otras profesiones) convierten en equipo y materiales. Usa los botones para planificar las creaciones que usan tu cuero. La lista es una guía de progresión: desuella criaturas del nivel indicado para cada rango de habilidad (una criatura necesita unos 5 puntos de habilidad por nivel).",
+    INFO_HERBALISM = "Herboristería no tiene recetas de creación propias. Las hierbas que recolectas las usa sobre todo Alquimia (y algunas otras profesiones). Usa los botones para planificar Alquimia. La lista muestra cada hierba, la habilidad necesaria para recolectarla y cuántas recetas la usan.",
+    INFO_FISHING = "Pesca no tiene recetas de creación propias. Los peces que capturas los usa sobre todo Cocina. Usa los botones para planificar Cocina.",
+    INFO_OPEN = "Abrir subida de %s", INFO_SIM = "Abrir simulador de %s", INFO_TIER = "Habilidad %d-%d: desuella criaturas de nivel %d-%d", INFO_HERBS = "Hierbas por habilidad necesaria",
+    INFO_SKILL = "habilidad %d", INFO_USES = "usado en %d recetas: %s", INFO_NOUSES = "no se usa en ninguna receta de la base de datos",
     TITLE = "Trailsmith Profesiones", PLAN = "Plan", MATS = "Materiales", RECIPES = "Recetas", SETTINGS = "Ajustes",
     FROM = "Desde", TO = "Hasta", MYSKILL = "Mi nivel", MAXSKILL = "Máx.",
     MODE_CHEAP = "Más barato", MODE_PROFIT = "Mayor beneficio", MODE_FAST = "Menos creaciones",
@@ -119,6 +129,11 @@ LOC.pt = {
     MM_TIP = "Clique: abrir o simulador de crafting. Arraste: mover.",
     KEY_CONFLICT = "Essa tecla já faz %s no jogo. Enquanto esta opção estiver ligada, o simulador a substitui. Use outra tecla ou desligue; o ícone do minimapa sempre funciona.",
     G_GUIDE = "Guia de coleta", G_ADV = "Opções avançadas", TAB_TUTOR = "Combat Tutor",
+    INFO_SKINNING = "Esfolamento não tem receitas de criação próprias. Você esfola feras para obter couro e peles, que Couraria (e algumas outras profissões) transformam em equipamentos e materiais. Use os botões para planejar as criações que usam o seu couro. A lista é um guia de progressão: esfole criaturas do nível indicado para cada faixa de perícia (uma criatura exige cerca de 5 pontos de perícia por nível).",
+    INFO_HERBALISM = "Herborismo não tem receitas de criação próprias. As ervas que você colhe são usadas principalmente por Alquimia (e algumas outras profissões). Use os botões para planejar Alquimia. A lista mostra cada erva, a perícia necessária para colhê-la e quantas receitas a usam.",
+    INFO_FISHING = "Pesca não tem receitas de criação próprias. Os peixes que você pega são usados principalmente por Culinária. Use os botões para planejar Culinária.",
+    INFO_OPEN = "Abrir subida de %s", INFO_SIM = "Abrir simulador de %s", INFO_TIER = "Perícia %d-%d: esfole criaturas de nível %d-%d", INFO_HERBS = "Ervas por perícia necessária",
+    INFO_SKILL = "perícia %d", INFO_USES = "usado em %d receitas: %s", INFO_NOUSES = "não é usado em nenhuma receita do banco de dados",
     TITLE = "Trailsmith Profissões", PLAN = "Plano", MATS = "Materiais", RECIPES = "Receitas", SETTINGS = "Opções",
     FROM = "De", TO = "Até", MYSKILL = "Minha perícia", MAXSKILL = "Máx.",
     MODE_CHEAP = "Mais barato", MODE_PROFIT = "Maior lucro", MODE_FAST = "Menos criações",
@@ -1834,9 +1849,11 @@ function UI:Refresh()
     local sidebar = (top == "craft" or top == "sim")
     for _, b in ipairs(self.topBtns) do SetSel(b, b.top == top) end
     self.leftPanel:SetShown(sidebar)
-    self.rightPanel:SetShown(sidebar)
-    self.craftPane:SetShown(top == "craft")
-    self.simPane:SetShown(top == "sim")
+    local craftable = not (def and def.gather)
+    self.rightPanel:SetShown(sidebar and craftable)
+    self.craftPane:SetShown(top == "craft" and craftable)
+    self.simPane:SetShown(top == "sim" and craftable)
+    self.infoPane:SetShown(sidebar and not craftable)
     self.gatherPane:SetShown(top == "gather")
     self.tutorPane:SetShown(top == "tutor")
     self.setPane:SetShown(top == "settings")
@@ -1889,6 +1906,10 @@ function UI:Refresh()
     SetCreateTarget(self.openCraft, key, nil, nil)
 
     local crafting = not (def and def.gather)
+    if not crafting then
+        self:RefreshInfo(key)
+        return
+    end
     if top == "sim" then
         Recompute()
         self:RefreshSim()
@@ -1921,6 +1942,53 @@ function UI:Refresh()
 end
 
 ---------------------------------------------------------------- linhas do simulador
+---------------------------------------------------------------- profissoes de coleta (sem receitas)
+-- Skinning, Herbalism and Fishing have no crafting recipes: show what they feed and a progression guide.
+local GATHER_INFO = {
+    skinning = { desc = "INFO_SKINNING", feeds = "leatherworking", tiers = {
+        { 1, 75, 1, 15, { 2934, 2318, 783 } },
+        { 75, 150, 15, 30, { 2318, 2319, 4232 } },
+        { 150, 225, 30, 45, { 2319, 4234, 4235 } },
+        { 225, 300, 45, 60, { 4234, 4304, 8169, 8170, 8171 } },
+    } },
+    herbalism = { desc = "INFO_HERBALISM", feeds = "alchemy", herbs = {
+        { 1, 2447 }, { 1, 765 }, { 15, 2449 }, { 50, 785 }, { 70, 2450 }, { 85, 3820 }, { 100, 2453 }, { 115, 3355 }, { 125, 3356 },
+        { 150, 3357 }, { 160, 3818 }, { 170, 3821 }, { 185, 3358 }, { 195, 3819 }, { 205, 4625 }, { 210, 8831 }, { 220, 8836 },
+        { 230, 8838 }, { 235, 8839 }, { 245, 8845 }, { 250, 8846 }, { 260, 13464 }, { 270, 13463 }, { 280, 13465 }, { 285, 13466 },
+        { 290, 13467 }, { 300, 13468 },
+    } },
+    fishing = { desc = "INFO_FISHING", feeds = "cooking" },
+}
+
+local function UseCounts()
+    if UI.useCounts then return UI.useCounts end
+    local uc = {}
+    for _, p in ipairs(PROFS) do
+        if not p.gather then
+            for _, r in ipairs(Decode(p.key)) do
+                for _, rg in ipairs(r.reag) do
+                    local e = uc[rg[1]]
+                    if not e then e = { total = 0, by = {} } uc[rg[1]] = e end
+                    e.total = e.total + 1
+                    e.by[p.key] = (e.by[p.key] or 0) + 1
+                end
+            end
+        end
+    end
+    UI.useCounts = uc
+    return uc
+end
+local function UseText(id)
+    local e = UseCounts()[id]
+    if not e or e.total == 0 then return S.INFO_NOUSES end
+    local keys = {}
+    for k in pairs(e.by) do keys[#keys + 1] = k end
+    table.sort(keys, function(a, b) return e.by[a] > e.by[b] end)
+    local parts = {}
+    for i, k in ipairs(keys) do if i <= 3 then parts[#parts + 1] = ProfLabel(k) .. " " .. e.by[k] end end
+    return S.INFO_USES:format(e.total, table.concat(parts, ", "))
+end
+
 local function MakeSimRow(parent)
     local row = RowBase(parent)
     row.name = Label(row, nil, "GameFontHighlight")
@@ -2012,6 +2080,12 @@ local function FillStepRow(row, it, idx)
         row.t1:SetText(("|cffffd100%d)|r %s  |cffffffff×%d|r"):format(it.i, name, st.crafts))
         row.t2:SetText(S.SIM_USES:format(MatLine(r, st.crafts)))
         row.right:SetText(st.final and ("|cff40c040" .. S.SIM_FINAL .. "|r") or "")
+    elseif it.kind == "yield" then
+        row.icon:SetTexture(ItemIcon(it.id))
+        row.link = "item:" .. it.id
+        row.t1:SetText("|cffffffff" .. (ItemName(it.id) or ("#" .. it.id)) .. "|r")
+        row.t2:SetText(UseText(it.id))
+        row.right:SetText(it.skill and ("|cffffd100" .. S.INFO_SKILL:format(it.skill) .. "|r") or "")
     else
         local b = it.b
         row.icon:SetTexture(ItemIcon(b.id))
@@ -2022,6 +2096,63 @@ local function FillStepRow(row, it, idx)
     end
 end
 local function LayoutStepRow(row, rh) IconSize(row, rh) end
+
+function UI:RefreshInfo(key)
+    local gi = GATHER_INFO[key]
+    local ip = self.infoPane
+    ip.title:SetText(ProfLabel(key))
+    local sk = skills[key]
+    local text = gi and S[gi.desc] or S.NORECIPES:format(ProfLabel(key))
+    if sk then text = text .. "\n\n" .. S.SKILL .. ": " .. sk.rank .. " / " .. sk.max end
+    ip.desc:SetText(text)
+    ip.feeds = gi and gi.feeds
+    if ip.feeds then
+        ip.btn:SetText(S.INFO_OPEN:format(ProfLabel(ip.feeds)))
+        FitBtn(ip.btn, 200)
+        ip.btn:Show()
+        ip.btn2:SetText(S.INFO_SIM:format(ProfLabel(ip.feeds)))
+        FitBtn(ip.btn2, 200)
+        ip.btn2:Show()
+    else
+        ip.btn:Hide()
+        ip.btn2:Hide()
+    end
+    local items = {}
+    if gi and gi.tiers then
+        for _, t in ipairs(gi.tiers) do
+            items[#items + 1] = { kind = "head", text = S.INFO_TIER:format(t[1], t[2], t[3], t[4]) }
+            for _, id in ipairs(t[5]) do items[#items + 1] = { kind = "yield", id = id } end
+        end
+    elseif gi and gi.herbs then
+        items[#items + 1] = { kind = "head", text = S.INFO_HERBS }
+        for _, h in ipairs(gi.herbs) do items[#items + 1] = { kind = "yield", id = h[2], skill = h[1] } end
+    end
+    ip.list:SetData(items, true)
+end
+
+function UI:BuildInfo(f)
+    local ip = CreateFrame("Frame", nil, f)
+    ip:SetPoint("TOPLEFT", M + LEFTW + GAP, -TOP)
+    ip:SetPoint("BOTTOMRIGHT", -M, BOT)
+    ip:Hide()
+    self.infoPane = ip
+    ip.title = Label(ip, "", "GameFontNormalLarge")
+    ip.title:SetPoint("TOPLEFT", 10, -8)
+    ip.desc = Label(ip, "", "GameFontHighlight")
+    ip.desc:SetPoint("TOPLEFT", ip.title, "BOTTOMLEFT", 0, -10)
+    ip.desc:SetPoint("RIGHT", ip, "RIGHT", -14, 0)
+    ip.desc:SetWordWrap(true)
+    ip.desc:SetJustifyV("TOP")
+    ip.btn = Btn(ip, "", 220, 24, function()
+        if ip.feeds then P.sel = ip.feeds UI.top = "craft" UI:Refresh() end
+    end)
+    ip.btn:SetPoint("TOPLEFT", 10, -128)
+    ip.btn2 = Btn(ip, "", 220, 24, function()
+        if ip.feeds then P.sel = ip.feeds UI.top = "sim" UI:Refresh() end
+    end)
+    ip.btn2:SetPoint("LEFT", ip.btn, "RIGHT", 8, 0)
+    ip.list = NewList(ip, 166, function() return UI.frame:GetHeight() - TOP - BOT end, MakeStepRow, FillStepRow, LayoutStepRow, 46)
+end
 
 ---------------------------------------------------------------- construcao
 function UI:BuildCraft(f)
@@ -2219,6 +2350,7 @@ function UI:BuildCraft(f)
     self.matList = NewList(foot, 46, FootH, MakeMatRow, FillMatRow, LayoutMatRow, 24)
 
     self:BuildSim(f)
+    self:BuildInfo(f)
 end
 
 function UI:BuildSim(f)
