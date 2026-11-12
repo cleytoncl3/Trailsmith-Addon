@@ -3,7 +3,8 @@
 //  - cmangos classic-db (trainer skill requirements, recipe items, vendor lists)
 const fs = require("fs");
 const P = require("./sqlparse.js");
-const D = "C:/Users/Cleyton/AppData/Local/Temp/claude/ffba5859012f6237/18c57d67-60c0-4a16-9371-29b84dd83aae/scratchpad/wago/";
+// pasta com os dados baixados (wago.tools CSV + classicdb.sql): variável TRAILSMITH_DATA ou tools/data/
+const D = (process.env.TRAILSMITH_DATA || require("path").join(__dirname, "data")).replace(/[\/]?$/, "/");
 const OUT = process.argv[2];
 
 function csv(f) {
