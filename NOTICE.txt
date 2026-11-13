@@ -1,0 +1,14 @@
+Trailsmith - license notice
+===========================
+
+Trailsmith is distributed under the GNU General Public License, version 2 or later (see LICENSE).
+It includes data from other projects that are also GPL:
+
+- Data\MiningData.lua and Data\HerbalismData.lua come, unmodified, from the GatherMate2_Data project
+  (Classic copy: github.com/Thurdi/GatherMate2_Data_Classic; original project:
+  github.com/Nevcairiel/GatherMate2) by kagaro, Xinhuan and Nevcairiel, distributed with GatherMate2
+  under the GNU General Public License, version 2 or later. The node positions were mined from Wowhead.
+- RecipeData.lua is generated from public DB2 exports (wago.tools) and from the cmangos classic-db project
+  (GPL-2.0): trainer, vendor and recipe-source data.
+
+All credit for those data goes to their authors.

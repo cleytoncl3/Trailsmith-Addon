@@ -79,6 +79,8 @@ local en = {
 
     OPT_LOWGAP = "Hide nodes far below my skill",
     OFF = "off",
+    UNKNOWN_ORE = { "Ore Yet Unknown to Azeroth", "Veil-Shrouded Ore", "Ore the World Has Yet to Name", "Whispering Ore of Lands Unseen", "Unrevealed Vein of a Distant Realm", "Secret Ore Slumbering Beneath the Stone", "Ore Beyond the Edge of the Map" },
+    UNKNOWN_HERB = { "Herb Yet Unknown to Azeroth", "Bloom Shrouded in Mystery", "Herb the World Has Yet to Name", "Whispering Herb of Lands Unseen", "Unrevealed Blossom of a Distant Realm", "Secret Root Awaiting Its Discovery", "Herb Beyond the Edge of the Map" },
     NODES_HINT = "Untick a resource to hide it. Prices: Auctionator last scan.",
     BTN_BEST = "Best value only",
     SORT_SKILL = "Sort: skill",
@@ -111,7 +113,7 @@ local en = {
     MSG_DISABLED = "disabled.",
     MSG_DISABLED_MM = "disabled (right click the icon to enable).",
 
-    NO_DATA = "starter database not found. Install GatherTrailData (CurseForge, or github.com/cleytoncl3/GatherTrailData) to see known locations.",
+    NO_DATA = "the starter node database is missing. Reinstall Trailsmith (the Data folder must be inside it).",
     MSG_RANGE = "range: %d yards",
     MSG_LOCKED = "arrow locked",
     MSG_UNLOCKED = "arrow unlocked: drag it to move",
@@ -194,6 +196,8 @@ local es = {
 
     OPT_LOWGAP = "Ocultar nodos muy bajos para mi nivel",
     OFF = "no",
+    UNKNOWN_ORE = { "Ore Yet Unknown to Azeroth", "Veil-Shrouded Ore", "Ore the World Has Yet to Name", "Whispering Ore of Lands Unseen", "Unrevealed Vein of a Distant Realm", "Secret Ore Slumbering Beneath the Stone", "Ore Beyond the Edge of the Map" },
+    UNKNOWN_HERB = { "Herb Yet Unknown to Azeroth", "Bloom Shrouded in Mystery", "Herb the World Has Yet to Name", "Whispering Herb of Lands Unseen", "Unrevealed Blossom of a Distant Realm", "Secret Root Awaiting Its Discovery", "Herb Beyond the Edge of the Map" },
     NODES_HINT = "Desmarca un recurso para ocultarlo. Precios: último escaneo de Auctionator.",
     BTN_BEST = "Solo los más valiosos",
     SORT_SKILL = "Orden: nivel",
@@ -226,7 +230,7 @@ local es = {
     MSG_DISABLED = "desactivado.",
     MSG_DISABLED_MM = "desactivado (clic derecho en el icono para activar).",
 
-    NO_DATA = "no se encontró la base inicial. Instala GatherTrailData (CurseForge, o github.com/cleytoncl3/GatherTrailData) para ver ubicaciones conocidas.",
+    NO_DATA = "falta la base inicial de nodos. Reinstala Trailsmith (la carpeta Data debe estar dentro).",
     MSG_RANGE = "alcance: %d yardas",
     MSG_LOCKED = "flecha bloqueada",
     MSG_UNLOCKED = "flecha desbloqueada: arrástrala para mover",
@@ -309,6 +313,8 @@ local pt = {
 
     OPT_LOWGAP = "Esconder veios muito abaixo da skill",
     OFF = "off",
+    UNKNOWN_ORE = { "Ore Yet Unknown to Azeroth", "Veil-Shrouded Ore", "Ore the World Has Yet to Name", "Whispering Ore of Lands Unseen", "Unrevealed Vein of a Distant Realm", "Secret Ore Slumbering Beneath the Stone", "Ore Beyond the Edge of the Map" },
+    UNKNOWN_HERB = { "Herb Yet Unknown to Azeroth", "Bloom Shrouded in Mystery", "Herb the World Has Yet to Name", "Whispering Herb of Lands Unseen", "Unrevealed Blossom of a Distant Realm", "Secret Root Awaiting Its Discovery", "Herb Beyond the Edge of the Map" },
     NODES_HINT = "Desmarque para esconder. Preços: último scan do Auctionator.",
     BTN_BEST = "Só os mais valiosos",
     SORT_SKILL = "Ordem: skill",
@@ -341,7 +347,7 @@ local pt = {
     MSG_DISABLED = "desativado.",
     MSG_DISABLED_MM = "desativado (clique direito no ícone para ativar).",
 
-    NO_DATA = "banco inicial não encontrado. Instale o GatherTrailData (CurseForge, ou github.com/cleytoncl3/GatherTrailData) para ver os locais conhecidos.",
+    NO_DATA = "falta o banco inicial de locais. Reinstale o Trailsmith (a pasta Data precisa estar dentro dele).",
     MSG_RANGE = "alcance: %d jardas",
     MSG_LOCKED = "seta travada",
     MSG_UNLOCKED = "seta destravada: arraste para mover",
@@ -349,17 +355,33 @@ local pt = {
     MSG_TEST_OFF = "modo de teste desligado.",
 }
 
-local loc = GetLocale and GetLocale() or "enUS"
-local active
-if loc == "esES" or loc == "esMX" then
-    active = es
-elseif loc == "ptBR" then
-    active = pt
+-- language of the game client: "en", "es" or "pt"
+function ns.ClientLang()
+    local loc = GetLocale and GetLocale() or "enUS"
+    if loc == "esES" or loc == "esMX" then return "es" elseif loc == "ptBR" then return "pt" end
+    return "en"
 end
 
 local L = {}
-if active then
-    for k, v in pairs(active) do L[k] = v end
+local function Fill(code)
+    for k in pairs(L) do L[k] = nil end
+    local active = (code == "es" and es) or (code == "pt" and pt) or nil
+    if active then
+        for k, v in pairs(active) do L[k] = v end
+    end
 end
+Fill(ns.ClientLang())
 setmetatable(L, { __index = function(_, k) return en[k] or k end })
 ns.L = L
+
+-- The saved language choice (GatherTrailDB.lang = "en" | "es" | "pt"; nothing = follow the game) is only
+-- available after the saved variables load, so it is applied from ADDON_LOADED.
+function ns.ApplyLanguage()
+    local db = _G.GatherTrailDB
+    local code = db and db.lang
+    if code ~= "en" and code ~= "es" and code ~= "pt" then code = ns.ClientLang() end
+    ns.lang = code
+    Fill(code)
+    if ns.SetProfLang then ns.SetProfLang(code) end
+    return code
+end

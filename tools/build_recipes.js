@@ -42,7 +42,20 @@ for (const r of csv("SpellReagents.csv")) {
   reag[r.SpellID] = l;
 }
 const sparse = {};
-for (const r of csv("ItemSparse.csv")) sparse[r.ID] = { sell: +r.SellPrice, buy: +r.BuyPrice, q: +r.OverallQualityID, stack: +r.Stackable };
+for (const r of csv("ItemSparse.csv")) sparse[r.ID] = { sell: +r.SellPrice, buy: +r.BuyPrice, q: +r.OverallQualityID, stack: +r.Stackable, name: r.Display_lang };
+// recipe items of the Forever build (class 9) named "Blueprint: X", "Recipe: X"...: used for recipes the
+// trainer/vendor tables do not know. key = lower case name after the colon.
+const recipeByName = {};
+{
+  const cls9 = new Set(csv("Item.csv").filter(r => +r.ClassID === 9).map(r => r.ID));
+  for (const id of cls9) {
+    const sp = sparse[id];
+    const m = sp && sp.name && sp.name.match(/^[^:]{3,16}:s*(.+)$/);
+    if (!m) continue;
+    const k = m[1].toLowerCase().trim();
+    if (!recipeByName[k] || +id < recipeByName[k]) recipeByName[k] = +id;
+  }
+}
 
 // ---- classic-db: trainers, recipe items, vendors
 // effect 36 = learn spell: map teaching spell -> learned spell(s)
@@ -102,10 +115,15 @@ for (const a of sla) {
   if (+a.AcquireMethod === 1) { src = "a"; req = 1; stats.auto = (stats.auto || 0) + 1; }
   else if (recipeItem[a.Spell]) { srcItem = recipeItem[a.Spell].item; src = vendor[srcItem] ? "v" : "i"; req = Math.max(min, recipeItem[a.Spell].rank); stats.item++; }
   else if (trainer[a.Spell] !== undefined) { src = "t"; req = Math.max(min, trainer[a.Spell]); stats.trainer++; }
-  else { req = Math.max(1, min, low - 10); stats.unknown++; }
+  else {
+    const nm = [names[a.Spell], item && sparse[item] && sparse[item].name].filter(Boolean).map(x => x.toLowerCase().trim());
+    const hit = nm.map(k => recipeByName[k]).find(Boolean);
+    if (hit) { srcItem = hit; src = vendor[hit] ? "v" : "i"; req = Math.max(1, min, low - 10); stats.named = (stats.named || 0) + 1; }
+    else { req = Math.max(1, min, low - 10); stats.unknown++; }
+  }
   if (req > low) req = low; // never ask for more than the yellow threshold
   stats.total++;
-  recipes[p.key].push({ spell: +a.Spell, req, low, high, item, qty, src, srcItem, reag: rg });
+  recipes[p.key].push({ spell: +a.Spell, req, low, high, item, qty, src, srcItem, reag: rg, alow: ann[a.Spell] ? ann[a.Spell].low : 0, ahigh: ann[a.Spell] ? ann[a.Spell].high : 0 });
   if (item) itemsUsed[item] = true;
   for (const [id] of rg) itemsUsed[id] = true;
   if (srcItem) itemsUsed[srcItem] = true;
@@ -213,8 +231,8 @@ for (const p of PROF) {
   recipes[p.key].sort((a, b) => a.low - b.low || a.spell - b.spell);
   for (const r of recipes[p.key]) {
     const rg = r.reag.map(([i, n]) => i + ":" + n).join(",");
-    // spell|req|low|high|item|qty|src|srcItem|reagents
-    lines.push(`    "${r.spell}|${r.req}|${r.low}|${r.high}|${r.item}|${r.qty}|${r.src}|${r.srcItem}|${rg}|${r.set || ""}",`);
+    // spell|req|low|high|item|qty|src|srcItem|reagents|set|annLow|annHigh
+    lines.push(`    "${r.spell}|${r.req}|${r.low}|${r.high}|${r.item}|${r.qty}|${r.src}|${r.srcItem}|${rg}|${r.set || ""}|${r.alow || ""}|${r.ahigh || ""}",`);
   }
   lines.push("  } },");
 }

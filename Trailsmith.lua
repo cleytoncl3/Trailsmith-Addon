@@ -107,7 +107,7 @@ local DEFAULTS = {
     hideMinedSecs = 300,  -- esconde um veio recem-minerado (respawn)
     arrowLocked = true,
     arrowScale = 100,     -- porcento
-    useSeed = true,       -- usa o banco inicial (addon GatherTrailData)
+    useSeed = true,       -- usa o banco inicial de locais (pasta Data)
     minimapButton = true,
     minimapAngle = 225,
     pinSize = 100,        -- tamanho dos icones (porcento)
@@ -347,7 +347,7 @@ local function IsSkipped(n)
     return e and e > time()
 end
 
----------------------------------------------------------------- banco inicial (GatherTrailData)
+---------------------------------------------------------------- banco inicial (Data\MiningData.lua e Data\HerbalismData.lua)
 -- Tabelas do GatherMate2_Data: [mapID][XXXXYYYY00] = nodeID. Convertidas sob demanda,
 -- uma zona por vez, para as mesmas coordenadas de mundo que UnitPosition usa.
 
@@ -391,8 +391,6 @@ local function SeedFor(map)
     if not (a and pm == map and Calibrate(a, b, pm, mx, my)) then return nil end
     local list = {}
     seedCache[map] = list
-    local load = (C_AddOns and C_AddOns.LoadAddOn) or LoadAddOn
-    if load then pcall(load, "GatherTrailData") end
     if not seedWarned and not _G.GatherMateData2MineDB and not _G.GatherMateData2HerbDB then
         seedWarned = true
         Print(L.NO_DATA)
@@ -1264,7 +1262,6 @@ local function BuildOptions(host)
     local d = pages.display
     Check(d, L.OPT_ARROW, "arrow")
     Check(d, L.OPT_LOCK, "arrowLocked", function() ApplyArrowPos() end)
-    Check(d, L.OPT_MMBTN, "minimapButton", function() if UpdateMMButton then UpdateMMButton() end end)
     Check(d, L.OPT_MMPINS, "minimapPins")
     Check(d, L.OPT_MAPPINS, "mapPins", ForceUpdate)
     Check(d, L.OPT_LINE, "line")
@@ -1316,6 +1313,21 @@ local function BuildOptions(host)
     for id in pairs(ORE_REQ) do ids[#ids + 1] = id end
 
     local rows, headers = {}, {}
+    local NAMEW = 250                          -- grows to the widest name (see Layout)
+    local X_RQ, X_PR, GRID_W
+    local function SetCols(nw)
+        NAMEW = nw
+        X_RQ = 48 + NAMEW + 14                 -- left edge of the skill column
+        X_PR = X_RQ + 40 + 12                  -- left edge of the price column
+        GRID_W = X_PR + 100 + 8                -- the faint row lines end right after the price
+    end
+    SetCols(250)
+    local function Grid(r, g, b, a)
+        local t = content:CreateTexture(nil, "BACKGROUND")
+        t:SetHeight(1)
+        if t.SetColorTexture then t:SetColorTexture(r, g, b, a) else t:SetTexture(r, g, b, a) end
+        return t
+    end
     for _, kind in ipairs({ "mine", "herb" }) do
         local h = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
         h:SetText(KINDS[kind].label)
@@ -1324,9 +1336,10 @@ local function BuildOptions(host)
         cs:SetJustifyH("RIGHT")
         cs:SetText(L.COL_SKILL)
         local cp = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        cp:SetPoint("TOPRIGHT", content, "TOPRIGHT", -6, 0)
+        cp:SetWidth(100)
+        cp:SetJustifyH("RIGHT")
         cp:SetText(L.COL_PRICE)
-        headers[kind] = { h = h, cs = cs, cp = cp }
+        headers[kind] = { h = h, cs = cs, cp = cp, line = Grid(1, 0.82, 0, 0.35) }
     end
 
     for _, id in ipairs(ids) do
@@ -1340,7 +1353,7 @@ local function BuildOptions(host)
         icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
         local nm = content:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         nm:SetPoint("LEFT", icon, "RIGHT", 6, 0)
-        nm:SetWidth(160)
+        nm:SetWidth(NAMEW)
         nm:SetJustifyH("LEFT")
         nm:SetWordWrap(false)
         local rq = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -1348,18 +1361,34 @@ local function BuildOptions(host)
         rq:SetWidth(40)
         rq:SetJustifyH("RIGHT")
         local pr = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        pr:SetWidth(110)
+        pr:SetWidth(100)
         pr:SetJustifyH("RIGHT")
         cb:SetScript("OnClick", function(self)
             db.hideOre[id] = (not self:GetChecked()) or nil
             ForceUpdate()
         end)
         refreshers[#refreshers + 1] = function() cb:SetChecked(not db.hideOre[id]) end
-        nameUpdaters[#nameUpdaters + 1] = function() nm:SetText(ItemName(id) or ("#" .. id)) end
-        rows[#rows + 1] = { id = id, kind = kind, cb = cb, nm = nm, rq = rq, pr = pr }
+        nameUpdaters[#nameUpdaters + 1] = function()
+            local name = ItemName(id)
+            if name then nm:SetTextColor(1, 1, 1) nm:SetText(name) return end
+            -- items from after the original game (Fel Iron, Adamantite, Cobalt...) have no name in this game
+            -- version even when the client knows their id: an ore or herb the world has not revealed yet
+            if id < 22000 then nm:SetTextColor(1, 1, 1) nm:SetText("...") return end
+            local pool = kind == "mine" and L.UNKNOWN_ORE or L.UNKNOWN_HERB
+            nm:SetTextColor(0.66, 0.56, 0.85)
+            nm:SetText(pool[(id % #pool) + 1])
+        end
+        rows[#rows + 1] = { id = id, kind = kind, cb = cb, nm = nm, rq = rq, pr = pr, line = Grid(1, 1, 1, 0.09) }
     end
 
     local function Layout()
+        local widest = 0
+        for _, r in ipairs(rows) do
+            local w = r.nm:GetStringWidth() or 0
+            if w > widest then widest = w end
+        end
+        SetCols(math.max(200, math.ceil(widest) + 6))
+        for _, r in ipairs(rows) do r.nm:SetWidth(NAMEW) end
         local ry = 0
         for _, kind in ipairs({ "mine", "herb" }) do
             local list = {}
@@ -1376,17 +1405,23 @@ local function BuildOptions(host)
             hd.h:ClearAllPoints()
             hd.h:SetPoint("TOPLEFT", content, "TOPLEFT", 4, ry - 2)
             hd.cp:ClearAllPoints()
-            hd.cp:SetPoint("TOPRIGHT", content, "TOPRIGHT", -6, ry - 4)
+            hd.cp:SetPoint("TOPLEFT", content, "TOPLEFT", X_PR, ry - 4)
             hd.cs:ClearAllPoints()
-            hd.cs:SetPoint("TOPRIGHT", content, "TOPRIGHT", -124, ry - 4)
+            hd.cs:SetPoint("TOPLEFT", content, "TOPLEFT", X_RQ, ry - 4)
+            hd.line:ClearAllPoints()
+            hd.line:SetPoint("TOPLEFT", content, "TOPLEFT", 0, ry - 19)
+            hd.line:SetWidth(GRID_W)
             ry = ry - 22
             for _, r in ipairs(list) do
                 r.cb:ClearAllPoints()
                 r.cb:SetPoint("TOPLEFT", content, "TOPLEFT", 0, ry)
                 r.rq:ClearAllPoints()
-                r.rq:SetPoint("TOPRIGHT", content, "TOPRIGHT", -124, ry - 6)
+                r.rq:SetPoint("TOPLEFT", content, "TOPLEFT", X_RQ, ry - 6)
                 r.pr:ClearAllPoints()
-                r.pr:SetPoint("TOPRIGHT", content, "TOPRIGHT", -6, ry - 6)
+                r.pr:SetPoint("TOPLEFT", content, "TOPLEFT", X_PR, ry - 6)
+                r.line:ClearAllPoints()
+                r.line:SetPoint("TOPLEFT", content, "TOPLEFT", 0, ry - 23)
+                r.line:SetWidth(GRID_W)
                 ry = ry - 24
             end
         end
@@ -1476,6 +1511,7 @@ local function BuildOptions(host)
 
     function f.RefreshNames()
         for _, u in ipairs(nameUpdaters) do u() end
+        Layout()
     end
 
     function f:Refresh()
@@ -1538,69 +1574,18 @@ local function PlaceMMButton()
     mmButton:SetPoint("CENTER", Minimap, "CENTER", x, y)
 end
 
+-- one launcher only: the Trailsmith icon (anvil) is created by Professions.lua; this just refreshes it
 UpdateMMButton = function()
-    if not (db and Minimap) then return end
-    if not mmButton then
-        local b = CreateFrame("Button", "GatherTrailMinimapButton", Minimap)
-        b:SetSize(31, 31)
-        b:SetFrameStrata("MEDIUM")
-        b:SetFrameLevel(Minimap:GetFrameLevel() + 8)
-        b:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-        b:RegisterForDrag("LeftButton")
-        local bg = b:CreateTexture(nil, "BACKGROUND")
-        bg:SetSize(20, 20)
-        bg:SetTexture("Interface\\Minimap\\UI-Minimap-Background")
-        bg:SetPoint("TOPLEFT", 7, -5)
-        local icon = b:CreateTexture(nil, "ARTWORK")
-        icon:SetSize(17, 17)
-        icon:SetTexture("Interface\\Icons\\INV_Pick_02")
-        icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-        icon:SetPoint("TOPLEFT", 7, -6)
-        b.icon = icon
-        local border = b:CreateTexture(nil, "OVERLAY")
-        border:SetSize(53, 53)
-        border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
-        border:SetPoint("TOPLEFT")
-        b:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
-
-        b:SetScript("OnClick", function(_, button)
-            if button == "RightButton" then
-                db.enabled = not db.enabled
-                UpdateMMButton()
-                Print(db.enabled and L.MSG_ENABLED or L.MSG_DISABLED_MM)
-            elseif IsShiftKeyDown() and ns.OpenProf then
-                ns.OpenProf()
-            else
-                ToggleOptions()
-            end
-        end)
-        b:SetScript("OnDragStart", function(self)
-            self:SetScript("OnUpdate", function()
-                local mx, my = Minimap:GetCenter()
-                local cx, cy = GetCursorPosition()
-                local sc = Minimap:GetEffectiveScale()
-                db.minimapAngle = math.deg(atan2(cy / sc - my, cx / sc - mx))
-                PlaceMMButton()
-            end)
-        end)
-        b:SetScript("OnDragStop", function(self) self:SetScript("OnUpdate", nil) end)
-        b:SetScript("OnEnter", function(self)
-            GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-            GameTooltip:AddLine("Trailsmith", 1, 0.82, 0)
-            GameTooltip:AddLine(L.MM_LEFT, 1, 1, 1)
-            GameTooltip:AddLine(L.MM_RIGHT, 1, 1, 1)
-            GameTooltip:AddLine(L.MM_DRAG, 0.7, 0.7, 0.7)
-            GameTooltip:AddLine(db.enabled and L.MM_ON or L.MM_OFF,
-                db.enabled and 0.3 or 1, db.enabled and 1 or 0.3, 0.3)
-            GameTooltip:Show()
-        end)
-        b:SetScript("OnLeave", function() GameTooltip:Hide() end)
-        mmButton = b
-    end
-    mmButton.icon:SetDesaturated(not db.enabled)
-    PlaceMMButton()
-    if db.minimapButton then mmButton:Show() else mmButton:Hide() end
+    if ns.UpdateProfMinimap then ns.UpdateProfMinimap() end
 end
+function ns.ToggleGather()
+    if not db then return end
+    db.enabled = not db.enabled
+    Print(db.enabled and L.MSG_ENABLED or L.MSG_DISABLED_MM)
+    if ns.UpdateProfMinimap then ns.UpdateProfMinimap() end
+end
+function ns.GatherOn() return db and db.enabled end
+function ns.MinimapHidden() return db and db.minimapButton == false end
 
 SLASH_MVAT1, SLASH_MVAT2 = "/mvat", "/tutor"
 SlashCmdList.MVAT = function()
@@ -1811,6 +1796,10 @@ local function Handle(_, event, ...)
         for k, v in pairs(DEFAULTS) do
             if db[k] == nil then db[k] = v end
         end
+        if ns.ApplyLanguage then ns.ApplyLanguage() end
+        -- texts captured while the file loaded (before the saved language was known)
+        KINDS.mine.label, KINDS.herb.label, KINDS.skin.label = L.KIND_mine, L.KIND_herb, L.KIND_skin
+        BINDING_NAME_GATHERTRAIL_SKIP = L.BINDING_SKIP
         db.nodes = db.nodes or {}
         db.skipped = db.skipped or {}
         db.testMode = false

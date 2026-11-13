@@ -3,23 +3,26 @@
 ## Title-ptBR: Trailsmith
 ## Title-esES: Trailsmith
 ## Title-esMX: Trailsmith
-## Notes: Gathering guide, smart autoloot and optional combat tutor: shows a directional arrow, a minimap line and minimap/world map icons (green = your skill is enough, red = too low).
-## Notes-esES: Guía de recolección: recuerda dónde minas, recoges hierbas y desuellas, y muestra una flecha direccional, una línea en el minimapa e iconos en el minimapa y el mapa (verde = tu habilidad alcanza, rojo = insuficiente).
-## Notes-esMX: Guía de recolección: recuerda dónde minas, recoges hierbas y desuellas, y muestra una flecha direccional, una línea en el minimapa e iconos en el minimapa y el mapa (verde = tu habilidad alcanza, rojo = insuficiente).
-## Notes-ptBR: Guia de coleta: memoriza onde você minera, colhe ervas e esfola, e mostra seta direcional, linha no minimapa e ícones no minimapa/mapa (verde = sua skill alcança, vermelho = não alcança).
+## Notes: Crafting simulator (profession leveling plans, shopping list, profit or loss) and gathering guide (arrow, minimap and map icons, filters, prices), plus an optional combat tutor.
+## Notes-esES: Simulador de crafteo (plan para subir profesión, lista de compras, beneficio o pérdida) y guía de recolección (flecha, iconos en minimapa y mapa, filtros, precios), con tutor de combate opcional.
+## Notes-esMX: Simulador de crafteo (plan para subir profesión, lista de compras, beneficio o pérdida) y guía de recolección (flecha, iconos en minimapa y mapa, filtros, precios), con tutor de combate opcional.
+## Notes-ptBR: Simulador de crafting (plano para subir profissão, lista de compras, lucro ou prejuízo) e guia de coleta (seta, ícones no minimapa e no mapa, filtros, preços), com combat tutor opcional.
 ## Author: cleytoncl3
-## Version: 1.5.1
+## Version: 1.6.0
 ## SavedVariables: GatherTrailDB, ForagerOreDB, MVAT_DB
-## OptionalDeps: GatherTrailData, Auctionator, TradeSkillMaster, Auctioneer
-## IconTexture: Interface\Icons\INV_Pick_02
+## OptionalDeps: Auctionator, TradeSkillMaster, Auctioneer
+## IconTexture: Interface\Icons\Trade_BlackSmithing
 ## X-Category: Professions
-## X-License: MIT
+## X-License: GPL-2.0-or-later
 ## X-Curse-Project-ID: 1798309
 ## X-Website: https://github.com/cleytoncl3/Trailsmith-Addon
 
+Data\MiningData.lua
+Data\HerbalismData.lua
 Locales.lua
 ConfirmedData.lua
 RecipeData.lua
+Market.lua
 Professions.lua
 CombatTutor.lua
 Trailsmith.lua

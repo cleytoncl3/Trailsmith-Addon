@@ -1,12 +1,31 @@
 # Trailsmith
 
+## 1.6.0
+- **Choose the language.** Settings has a Language button: Automatic (follows the game, as before), English, Español or Português. The interface reloads to apply it. The Combat Tutor texts are still only in Portuguese.
+- **GatherTrailData is now part of Trailsmith.** The starter node database (community GatherMate2 data) ships inside Trailsmith, in the Data folder, so there is only one addon to install. If you had GatherTrailData, you can delete its folder. Because the data is GPL, Trailsmith is now licensed GPL-2.0-or-later (it was MIT).
+- **One Trailsmith.** The addon list and the minimap now show a single Trailsmith entry with the anvil icon (the old pickaxe icon is gone). Left click opens the window, right click turns the gathering guide on or off. The window is simply called "Trailsmith".
+- **Clearer tab names:** "Leveling guide" and "Craft simulator" (translated to your game language).
+- **Pin all materials** in the Leveling guide, and a pinned list with sections: everything you pin (a leveling plan, one or more crafts) stays in its own section with a title, a blank line between sections and its own remove button, instead of replacing the previous one.
+- **Resources list is easier to read.** The skill and price columns now sit right after the resource name (with room for long names) instead of at the far right of the window, and every row has a thin, faint line so your eye can follow it from name to price. The name column grows to fit the longest name, so it can never cover the skill number. Ores and herbs that this game version does not have yet show a mysterious name in purple ("Ore Yet Unknown to Azeroth", "Bloom Shrouded in Mystery"...) instead of a bare item number.
+- **More reliable prices.** Trailsmith now keeps its own price list: whenever you search or scan the auction house it reads the listings and saves the **median of the three cheapest buyouts**, ignoring absurdly low outliers (typos, bots) and counting each listing once. While that scan is at most 2 days old it is used before the other addons; after that TradeSkillMaster, Auctionator or Auctioneer take over. If the chosen source has no price for an item, the others are tried before falling back to vendor values. A price below what a vendor pays for the item is treated as a bait listing and raised to the vendor price.
+- The shopping list and item tooltips show **where each price came from** (and how old it is for the Trailsmith scan). The 5% auction house cut is still subtracted from sale values.
+- **Bank awareness.** When you visit the bank, Trailsmith saves what is in it. Plans, the simulator, the pinned tracker and the material footer then count your bank items (in blue) and tell you how many are in the bank, even when you are far away. Can be turned off in the crafting options.
+
+- **Update prices** button (crafting options panel, used by both leveling and the simulator, and next to the recipe list). It reads Auctionator, TSM, Auctioneer and the Trailsmith list again; prices also refresh by themselves a moment after a scan is read and when you close the auction house. Trailsmith's own scan no longer overrides Auctionator data that is newer.
+- **Recipe order** button in the simulator list (all professions): by required skill (lowest first), by profit (highest first, recipes without a sale value last) or by name. Each row now shows the required skill and the estimated profit.
+
+- **Plans no longer count recipes you cannot reach.** If no recipe gives skill points in some range (a gap), the steps after the gap are shown as "after the gap" and left out of the totals, the materials list and the cost, so you do not buy materials you cannot use yet. A message explains the gap and, when possible, which recipe could cover it.
+- **Calibration with the game.** Whenever you open a profession window, Trailsmith reads the colour (orange/yellow/green/grey) the game shows for each recipe you know and corrects its own skill table where they disagree (Debug log: `/tsp log`). Recipes also carry the Classic Anniversary range as a hint.
+- **Buy or gather?** The leveling tab now says in plain words whether buying the materials pays off. If the plan loses money, it compares with gathering the raw materials yourself and tells you which is cheaper.
+- **Recipes you do not have yet.** The recipe database now links 1,000+ more recipes to the item that teaches them (for example "Blueprint: Rock Garden"). When none of your recipes gives skill points in a range, the plan suggests one you could obtain, says where it comes from, counts the recipe's auction price when known, and marks the step "get: <recipe item>".
+- Quantities are labelled as an average estimate (skill-up chances 100% orange, 75% yellow, 25% green).
+
 ## 1.5.1
 - Skinning, Herbalism and Fishing no longer show a dead end. Each has a page that explains what it feeds (Skinning -> Leatherworking, Herbalism -> Alchemy, Fishing -> Cooking), with buttons that open that profession's leveling plan or simulator. Skinning shows a progression guide (which creature levels to skin at each skill range, which leather you get and how many recipes use it); Herbalism lists every herb with the skill to pick it and how many recipes use it.
 
 ## 1.5.0
 - **Gathering** tab now has two sub-tabs: **Gathering guide** (quick switches) and **Advanced options** with every Trailsmith option (General, Display, Resources with per-resource filter and prices). The separate options window is gone; the Trailsmith minimap button opens this tab.
 - **Combat Tutor** has its own tab next to Gathering (it was inside the Trailsmith options). Still off by default.
-- `Update.bat` points to the new repository and also updates GatherTrailData when it is installed next to the addon.
 - New home: github.com/cleytoncl3/Trailsmith-Addon.
 
 ## 1.4.2

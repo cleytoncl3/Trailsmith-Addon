@@ -1,11 +1,11 @@
 package-as: Trailsmith
 
 ignore:
-  - Update.bat
   - Contribute.bat
   - Contribute.ps1
   - workflow-template
   - tools
+  - docs
   - confirmations.json
   - CHANGELOG.md
   - CURSEFORGE.md

@@ -4,12 +4,17 @@ A toolkit for gatherers and more: a gathering guide for **Mining** and **Herbali
 
 The full feature description, FAQ and commands are in [CURSEFORGE.md](CURSEFORGE.md) (the text used on the CurseForge page).
 
+## Screenshots
+
+![Gathering: the nearest Iron Deposit marked on the minimap, with the arrow pointing to it](docs/images/gathering-minimap.png)
+
+*Gathering guide: known nodes on the minimap, the tooltip names the resource, and the arrow points to the nearest one you can gather.*
+
 ## Download and install
 
 - **Latest release (zip):** https://github.com/cleytoncl3/Trailsmith-Addon/releases/latest
-  Unzip it into `World of Warcraft_forever_InterfaceAddOns` so you end up with an `AddOnsTrailsmith` folder. The release also has an optional `GatherTrailData.zip` (starter node database) that goes next to it.
-- **Update with one click:** run `Update.bat` inside the `Trailsmith` folder. It downloads the latest version from this repository (and updates GatherTrailData if it is installed), no git or browser needed. Close the game first or `/reload` afterwards. Your settings are not touched.
-- **CurseForge:** install **Trailsmith** (and optionally **GatherTrailData**) once the pages are approved.
+  Unzip it into `World of Warcraft_forever_InterfaceAddOns` so you end up with an `AddOnsTrailsmith` folder.
+- **CurseForge:** install **Trailsmith** with your addon manager. Updates come from there. The starter node database is included.
 
 Open the window with the minimap icon, `/tsp`, `/gt` or Ctrl+K (changeable). Languages: English, Spanish and Portuguese, chosen from the game language.
 
@@ -50,4 +55,4 @@ Tag a version (for example `v1.1.0`) and push the tag: the packaging workflow (`
 
 ## Credits and license
 
-MIT, see [LICENSE](LICENSE). Starter locations come from GatherMate2 data (GPL) and live in the separate [GatherTrailData](https://github.com/cleytoncl3/GatherTrailData) addon.
+GPL-2.0-or-later, see [LICENSE](LICENSE) and [NOTICE.txt](NOTICE.txt). Starter locations come from GatherMate2 data (GPL) and live in the `Data` folder.

@@ -21,12 +21,12 @@ LOC.en = {
     MSG_NEAREST = "Nearest %s: %s in %s (%.1f, %.1f). Marked on the map.", MSG_NOSPOT = "No known location for this recipe.", FOOT_SELECT = "Click a recipe to see its details here.",
     FOCUS = { Anvil = "Anvil", Forge = "Forge", Loom = "Loom", ["Cooking Fire"] = "Cooking fire", ["Alchemy Lab"] = "Alchemy lab", ["Tanning Rack"] = "Tanning rack", ["Spinning Wheel"] = "Spinning wheel", ["Master Forge"] = "Master forge", ["Iron Oven"] = "Iron oven" },
     OPT_LOG = "Record a debug log of craft attempts", BTN_SHOWLOG = "Show log (copy with Ctrl+C)", BTN_CLEARLOG = "Clear log",
-    TAB_LEVEL = "Profession leveling", TAB_SIM = "Simulator", NEEDLEARN = "learn first", CARD_BUY = "To buy", CARD_SELL = "Sells for", PROFIT = "Profit", LOSS = "Loss",
+    TAB_LEVEL = "Leveling guide", TAB_SIM = "Craft simulator", NEEDLEARN = "learn first", CARD_BUY = "To buy", CARD_SELL = "Sells for", PROFIT = "Profit", LOSS = "Loss",
     SIM_QTY = "Quantity", SIM_USEOWNED = "Use what I already have in my bags", SIM_STEPS = "Step by step", SIM_BUY = "Shopping list (market price)", SIM_NOBUY = "Nothing to buy: you already have everything.",
     SIM_USES = "uses: %s", SIM_FINAL = "final item", SIM_PICK = "Pick a recipe on the left to simulate it.", BTN_PIN = "Pin to screen", BTN_UNPIN = "Remove from screen",
     BTN_CRAFTWIN = "Open crafting window", MSG_SELECT_MANUAL = "Crafting window opened. Look for %s in the list.", TRACK_DONE = "ready!", TRACK_CRAFT = "craft", SIM_BTN = "Simulation",
     MATS_TOTAL = "Total materials for the whole plan", TRACK_OPEN = "Open crafting", OPT_MM = "Show the simulator icon on the minimap",
-    MM_TIP = "Click: open the crafting simulator. Drag: move.",
+    MM_TIP = "Click: open Trailsmith. Right click: turn the gathering guide on or off. Drag: move.",
     KEY_CONFLICT = "That key already does %s in the game. While this option is on, the simulator takes it over. Use another key or switch it off; the minimap icon always works.",
     G_GUIDE = "Gathering guide", G_ADV = "Advanced options", TAB_TUTOR = "Combat Tutor",
     INFO_SKINNING = "Skinning has no crafting recipes of its own. You skin beasts to get leather and hides, which Leatherworking (and a few other professions) turn into gear and materials. Use the buttons to plan the crafts that use your leather. The list is a leveling guide: skin creatures of the level shown for each skill range (a creature needs about 5 skill points per level).",
@@ -34,7 +34,23 @@ LOC.en = {
     INFO_FISHING = "Fishing has no crafting recipes of its own. The fish you catch are used mostly by Cooking. Use the buttons to plan Cooking.",
     INFO_OPEN = "Open %s leveling", INFO_SIM = "Open %s simulator", INFO_TIER = "Skill %d-%d: skin creatures of level %d-%d", INFO_HERBS = "Herbs by skill needed",
     INFO_SKILL = "skill %d", INFO_USES = "used in %d recipes: %s", INFO_NOUSES = "not used in any recipe of the database",
-    TITLE = "Trailsmith Professions", PLAN = "Plan", MATS = "Materials", RECIPES = "Recipes", SETTINGS = "Settings",
+    PRICE_FROM = "Price: %s", BANK_TIP = "In bags: %d, in bank: %d (go to the bank to pick them up)", TRACK_BANK = "bank %d", FOOT_HAVE_BANK = "have %d + bank %d",
+    OPT_BANK = "Count items I keep in my bank (saved when I visit it)",
+    BTN_REFRESH = "Update prices", REFRESH_TIP = "Reads the prices again from Auctionator, TradeSkillMaster, Auctioneer and the Trailsmith list. Use it after scanning the auction house.", REFRESHED = "prices updated (%d items in the Trailsmith list).",
+    SORT_LEVEL = "Order: level", SORT_PROFIT = "Order: profit", SORT_NAME = "Order: name",
+    V_GAP = "No recipe gives skill points between %d and %d with the current data, so the plan below only counts what you can do BEFORE that gap. Gather or mine by hand to cross it (or open the game's %s window once so Trailsmith can check the real colours).",
+    V_LOSS = "Buying all the materials costs %s and loses %s after selling the results. Gathering the raw materials yourself would cost only %s: it is better to go and gather them than to buy them.",
+    V_LOSS2 = "This plan costs %s and loses %s after selling the results. Check the prices before spending.",
+    V_OK = "Buying everything costs %s (%s per skill point) and the crafted items pay for it.",
+    NOREC_HINT = "No recipe for skill %d-%d in the game data. The Classic Anniversary table says %s might still give points here: open the game's profession window to confirm.",
+    LATER = "after the gap", AVERAGE = "average estimate",
+    NOREC_SRC = "No allowed recipe for skill %d-%d. %s covers it but its source is not allowed (unknown source, quest...): turn on 'other sources' in the options if you have it.",
+    GET_RECIPE = "get: %s", V_AH = "auction house or drop",
+    V_GET = "No recipe you know covers part of this range. Recommended: obtain %s. The price of the recipe is counted when the auction house price is known.",
+    LANG_BTN = "Language: %s", LANG_AUTO = "Automatic (game language)", LANG_APPLY = "Apply now (reloads the interface)", LANG_NOTE = "Pick the language of Trailsmith. The interface reloads to apply it. The Combat Tutor texts are only in Portuguese for now.",
+    TITLE = "Trailsmith",
+    BTN_PIN_PLAN = "Pin all materials", BTN_UNPIN_PLAN = "Unpin materials", PIN_PLAN_TIP = "Pins every material of this plan on the screen as a list you can follow while you shop. Pinned things stack: each one keeps its own title.", TRACK_PLAN = "materials", MM_GATHER_ON = "Gathering guide: ON", MM_GATHER_OFF = "Gathering guide: OFF",
+ PLAN = "Plan", MATS = "Materials", RECIPES = "Recipes", SETTINGS = "Settings",
     FROM = "From", TO = "To", MYSKILL = "My skill", MAXSKILL = "Max",
     MODE_CHEAP = "Cheapest", MODE_PROFIT = "Best profit", MODE_FAST = "Fewest crafts",
     CARD_POINTS = "Points", CARD_CRAFTS = "Crafts", CARD_COST = "Cost", CARD_TIME = "Time", CARD_NET = "Net if sold",
@@ -71,12 +87,12 @@ LOC.es = {
     MSG_NEAREST = "%s más cercano: %s en %s (%.1f, %.1f). Marcado en el mapa.", MSG_NOSPOT = "No se conoce la ubicación de esta receta.", FOOT_SELECT = "Haz clic en una receta para ver sus detalles aquí.",
     FOCUS = { Anvil = "Yunque", Forge = "Forja", Loom = "Telar", ["Cooking Fire"] = "Fuego de cocina", ["Alchemy Lab"] = "Laboratorio de alquimia", ["Tanning Rack"] = "Caballete de curtido", ["Spinning Wheel"] = "Rueca", ["Master Forge"] = "Forja maestra", ["Iron Oven"] = "Horno de hierro" },
     OPT_LOG = "Registrar un log de depuración de los intentos de creación", BTN_SHOWLOG = "Mostrar log (copiar con Ctrl+C)", BTN_CLEARLOG = "Borrar log",
-    TAB_LEVEL = "Subir profesión", TAB_SIM = "Simulador", NEEDLEARN = "aprender primero", CARD_BUY = "A comprar", CARD_SELL = "Se vende por", PROFIT = "Beneficio", LOSS = "Pérdida",
+    TAB_LEVEL = "Guía de profesión", TAB_SIM = "Simulador de crafteo", NEEDLEARN = "aprender primero", CARD_BUY = "A comprar", CARD_SELL = "Se vende por", PROFIT = "Beneficio", LOSS = "Pérdida",
     SIM_QTY = "Cantidad", SIM_USEOWNED = "Usar lo que ya tengo en las bolsas", SIM_STEPS = "Paso a paso", SIM_BUY = "Lista de compra (precio de mercado)", SIM_NOBUY = "Nada que comprar: ya tienes todo.",
     SIM_USES = "usa: %s", SIM_FINAL = "objeto final", SIM_PICK = "Elige una receta a la izquierda para simularla.", BTN_PIN = "Fijar en pantalla", BTN_UNPIN = "Quitar de la pantalla",
     BTN_CRAFTWIN = "Abrir ventana de creación", MSG_SELECT_MANUAL = "Ventana de creación abierta. Busca %s en la lista.", TRACK_DONE = "¡listo!", TRACK_CRAFT = "crear", SIM_BTN = "Simulación",
     MATS_TOTAL = "Materiales totales de todo el plan", TRACK_OPEN = "Abrir creación", OPT_MM = "Mostrar el icono del simulador en el minimapa",
-    MM_TIP = "Clic: abrir el simulador de creación. Arrastrar: mover.",
+    MM_TIP = "Clic: abrir Trailsmith. Clic derecho: activar o desactivar la guía de recolección. Arrastrar: mover.",
     KEY_CONFLICT = "Esa tecla ya hace %s en el juego. Mientras esta opción esté activa, el simulador la reemplaza. Usa otra tecla o desactívala; el icono del minimapa siempre funciona.",
     G_GUIDE = "Guía de recolección", G_ADV = "Opciones avanzadas", TAB_TUTOR = "Combat Tutor",
     INFO_SKINNING = "Desuello no tiene recetas de creación propias. Desuellas bestias para obtener cuero y pieles, que Peletería (y algunas otras profesiones) convierten en equipo y materiales. Usa los botones para planificar las creaciones que usan tu cuero. La lista es una guía de progresión: desuella criaturas del nivel indicado para cada rango de habilidad (una criatura necesita unos 5 puntos de habilidad por nivel).",
@@ -84,7 +100,23 @@ LOC.es = {
     INFO_FISHING = "Pesca no tiene recetas de creación propias. Los peces que capturas los usa sobre todo Cocina. Usa los botones para planificar Cocina.",
     INFO_OPEN = "Abrir subida de %s", INFO_SIM = "Abrir simulador de %s", INFO_TIER = "Habilidad %d-%d: desuella criaturas de nivel %d-%d", INFO_HERBS = "Hierbas por habilidad necesaria",
     INFO_SKILL = "habilidad %d", INFO_USES = "usado en %d recetas: %s", INFO_NOUSES = "no se usa en ninguna receta de la base de datos",
-    TITLE = "Trailsmith Profesiones", PLAN = "Plan", MATS = "Materiales", RECIPES = "Recetas", SETTINGS = "Ajustes",
+    PRICE_FROM = "Precio: %s", BANK_TIP = "En bolsas: %d, en el banco: %d (ve al banco a recogerlos)", TRACK_BANK = "banco %d", FOOT_HAVE_BANK = "tienes %d + banco %d",
+    OPT_BANK = "Contar los objetos que guardo en el banco (se guarda al visitarlo)",
+    BTN_REFRESH = "Actualizar precios", REFRESH_TIP = "Vuelve a leer los precios de Auctionator, TradeSkillMaster, Auctioneer y la lista de Trailsmith. Úsalo tras escanear la casa de subastas.", REFRESHED = "precios actualizados (%d objetos en la lista de Trailsmith).",
+    SORT_LEVEL = "Orden: nivel", SORT_PROFIT = "Orden: beneficio", SORT_NAME = "Orden: nombre",
+    V_GAP = "Ninguna receta da puntos entre %d y %d con los datos actuales, así que el plan solo cuenta lo que puedes hacer ANTES de ese hueco. Recolecta o mina a mano para cruzarlo (o abre una vez la ventana de %s del juego para que Trailsmith compruebe los colores reales).",
+    V_LOSS = "Comprar todos los materiales cuesta %s y pierdes %s tras vender el resultado. Recolectar tú mismo las materias primas costaría solo %s: es mejor ir a recolectarlas que comprarlas.",
+    V_LOSS2 = "Este plan cuesta %s y pierdes %s tras vender el resultado. Revisa los precios antes de gastar.",
+    V_OK = "Comprarlo todo cuesta %s (%s por punto de habilidad) y los objetos creados lo pagan.",
+    NOREC_HINT = "Sin receta para el nivel %d-%d en los datos del juego. La tabla de Classic Anniversary dice que %s podría dar puntos aquí: abre la ventana de la profesión para confirmarlo.",
+    LATER = "tras el hueco", AVERAGE = "estimación media",
+    NOREC_SRC = "Ninguna receta permitida para el nivel %d-%d. %s lo cubre pero su fuente no está permitida (fuente desconocida, misión...): activa 'otras fuentes' en las opciones si la tienes.",
+    GET_RECIPE = "conseguir: %s", V_AH = "casa de subastas o botín",
+    V_GET = "Ninguna receta que conozcas cubre parte de este rango. Recomendado: conseguir %s. El precio de la receta se cuenta cuando se conoce su precio en la casa de subastas.",
+    LANG_BTN = "Idioma: %s", LANG_AUTO = "Automático (idioma del juego)", LANG_APPLY = "Aplicar ahora (recarga la interfaz)", LANG_NOTE = "Elige el idioma de Trailsmith. La interfaz se recarga para aplicarlo. Los textos del Combat Tutor solo están en portugués por ahora.",
+    TITLE = "Trailsmith",
+    BTN_PIN_PLAN = "Fijar todos los materiales", BTN_UNPIN_PLAN = "Quitar materiales", PIN_PLAN_TIP = "Fija en pantalla todos los materiales de este plan como una lista que puedes seguir mientras compras. Lo fijado se apila: cada cosa conserva su título.", TRACK_PLAN = "materiales", MM_GATHER_ON = "Guía de recolección: ACTIVADA", MM_GATHER_OFF = "Guía de recolección: DESACTIVADA",
+ PLAN = "Plan", MATS = "Materiales", RECIPES = "Recetas", SETTINGS = "Ajustes",
     FROM = "Desde", TO = "Hasta", MYSKILL = "Mi nivel", MAXSKILL = "Máx.",
     MODE_CHEAP = "Más barato", MODE_PROFIT = "Mayor beneficio", MODE_FAST = "Menos creaciones",
     CARD_POINTS = "Puntos", CARD_CRAFTS = "Creaciones", CARD_COST = "Coste", CARD_TIME = "Tiempo", CARD_NET = "Neto",
@@ -121,12 +153,12 @@ LOC.pt = {
     MSG_NEAREST = "%s mais próximo: %s em %s (%.1f, %.1f). Marcado no mapa.", MSG_NOSPOT = "Local desta receita desconhecido.", FOOT_SELECT = "Clique numa receita para ver os detalhes aqui.",
     FOCUS = { Anvil = "Bigorna", Forge = "Forja", Loom = "Tear", ["Cooking Fire"] = "Fogueira de cozinha", ["Alchemy Lab"] = "Laboratório de alquimia", ["Tanning Rack"] = "Cavalete de curtimento", ["Spinning Wheel"] = "Roda de fiar", ["Master Forge"] = "Forja mestra", ["Iron Oven"] = "Forno de ferro" },
     OPT_LOG = "Gravar um log de depuração das tentativas de criação", BTN_SHOWLOG = "Mostrar log (copiar com Ctrl+C)", BTN_CLEARLOG = "Limpar log",
-    TAB_LEVEL = "Subir profissão", TAB_SIM = "Simulador", NEEDLEARN = "aprender antes", CARD_BUY = "Comprar", CARD_SELL = "Vende por", PROFIT = "Lucro", LOSS = "Prejuízo",
+    TAB_LEVEL = "Guia de profissão", TAB_SIM = "Simulador de craft", NEEDLEARN = "aprender antes", CARD_BUY = "Comprar", CARD_SELL = "Vende por", PROFIT = "Lucro", LOSS = "Prejuízo",
     SIM_QTY = "Quantidade", SIM_USEOWNED = "Usar o que eu já tenho nas bolsas", SIM_STEPS = "Passo a passo", SIM_BUY = "Lista de compras (preço de mercado)", SIM_NOBUY = "Nada para comprar: você já tem tudo.",
     SIM_USES = "usa: %s", SIM_FINAL = "item final", SIM_PICK = "Escolha uma receita à esquerda para simular.", BTN_PIN = "Fixar na tela", BTN_UNPIN = "Remover da tela",
     BTN_CRAFTWIN = "Abrir janela de criação", MSG_SELECT_MANUAL = "Janela de criação aberta. Procure %s na lista.", TRACK_DONE = "pronto!", TRACK_CRAFT = "criar", SIM_BTN = "Simulação",
     MATS_TOTAL = "Total de materiais de todo o plano", TRACK_OPEN = "Abrir criação", OPT_MM = "Mostrar o ícone do simulador no minimapa",
-    MM_TIP = "Clique: abrir o simulador de crafting. Arraste: mover.",
+    MM_TIP = "Clique: abrir o Trailsmith. Clique direito: ligar ou desligar o guia de coleta. Arraste: mover.",
     KEY_CONFLICT = "Essa tecla já faz %s no jogo. Enquanto esta opção estiver ligada, o simulador a substitui. Use outra tecla ou desligue; o ícone do minimapa sempre funciona.",
     G_GUIDE = "Guia de coleta", G_ADV = "Opções avançadas", TAB_TUTOR = "Combat Tutor",
     INFO_SKINNING = "Esfolamento não tem receitas de criação próprias. Você esfola feras para obter couro e peles, que Couraria (e algumas outras profissões) transformam em equipamentos e materiais. Use os botões para planejar as criações que usam o seu couro. A lista é um guia de progressão: esfole criaturas do nível indicado para cada faixa de perícia (uma criatura exige cerca de 5 pontos de perícia por nível).",
@@ -134,7 +166,23 @@ LOC.pt = {
     INFO_FISHING = "Pesca não tem receitas de criação próprias. Os peixes que você pega são usados principalmente por Culinária. Use os botões para planejar Culinária.",
     INFO_OPEN = "Abrir subida de %s", INFO_SIM = "Abrir simulador de %s", INFO_TIER = "Perícia %d-%d: esfole criaturas de nível %d-%d", INFO_HERBS = "Ervas por perícia necessária",
     INFO_SKILL = "perícia %d", INFO_USES = "usado em %d receitas: %s", INFO_NOUSES = "não é usado em nenhuma receita do banco de dados",
-    TITLE = "Trailsmith Profissões", PLAN = "Plano", MATS = "Materiais", RECIPES = "Receitas", SETTINGS = "Opções",
+    PRICE_FROM = "Preço: %s", BANK_TIP = "Nas bolsas: %d, no banco: %d (vá ao banco buscar)", TRACK_BANK = "banco %d", FOOT_HAVE_BANK = "tem %d + banco %d",
+    OPT_BANK = "Contar os itens que guardo no banco (salvo quando eu visito o banco)",
+    BTN_REFRESH = "Atualizar preços", REFRESH_TIP = "Lê os preços de novo do Auctionator, TradeSkillMaster, Auctioneer e da lista do Trailsmith. Use depois de escanear a casa de leilões.", REFRESHED = "preços atualizados (%d itens na lista do Trailsmith).",
+    SORT_LEVEL = "Ordem: nível", SORT_PROFIT = "Ordem: lucro", SORT_NAME = "Ordem: nome",
+    V_GAP = "Nenhuma receita dá pontos entre %d e %d com os dados atuais, então o plano abaixo só conta o que você consegue fazer ANTES desse buraco. Colete ou minere à mão para atravessá-lo (ou abra uma vez a janela de %s do jogo para o Trailsmith conferir as cores reais).",
+    V_LOSS = "Comprar todos os materiais custa %s e dá prejuízo de %s depois de vender o resultado. Coletar você mesmo a matéria-prima custaria só %s: vale mais a pena ir coletar do que comprar.",
+    V_LOSS2 = "Este plano custa %s e dá prejuízo de %s depois de vender o resultado. Confira os preços antes de gastar.",
+    V_OK = "Comprar tudo custa %s (%s por ponto de perícia) e os itens criados pagam o gasto.",
+    NOREC_HINT = "Sem receita para a perícia %d-%d nos dados do jogo. A tabela do Classic Anniversary diz que %s ainda pode dar pontos aqui: abra a janela da profissão no jogo para confirmar.",
+    LATER = "depois do buraco", AVERAGE = "estimativa média",
+    NOREC_SRC = "Nenhuma receita permitida para a perícia %d-%d. %s cobre essa faixa, mas a fonte dela não está permitida (fonte desconhecida, missão...): ative 'outras fontes' nas opções se você a tiver.",
+    GET_RECIPE = "obter: %s", V_AH = "casa de leilões ou drop",
+    V_GET = "Nenhuma receita que você conhece cobre parte desta faixa. Recomendado: obter %s. O preço da receita entra na conta quando o preço dela na casa de leilões é conhecido.",
+    LANG_BTN = "Idioma: %s", LANG_AUTO = "Automático (idioma do jogo)", LANG_APPLY = "Aplicar agora (recarrega a interface)", LANG_NOTE = "Escolha o idioma do Trailsmith. A interface recarrega para aplicar. Os textos do Combat Tutor só existem em português por enquanto.",
+    TITLE = "Trailsmith",
+    BTN_PIN_PLAN = "Fixar todos os materiais", BTN_UNPIN_PLAN = "Desafixar materiais", PIN_PLAN_TIP = "Fixa na tela todos os materiais deste plano, como uma lista para seguir enquanto você compra. O que você fixa se empilha: cada coisa mantém o seu título.", TRACK_PLAN = "materiais", MM_GATHER_ON = "Guia de coleta: LIGADO", MM_GATHER_OFF = "Guia de coleta: DESLIGADO",
+ PLAN = "Plano", MATS = "Materiais", RECIPES = "Receitas", SETTINGS = "Opções",
     FROM = "De", TO = "Até", MYSKILL = "Minha perícia", MAXSKILL = "Máx.",
     MODE_CHEAP = "Mais barato", MODE_PROFIT = "Maior lucro", MODE_FAST = "Menos criações",
     CARD_POINTS = "Pontos", CARD_CRAFTS = "Criações", CARD_COST = "Custo", CARD_TIME = "Tempo", CARD_NET = "Líquido",
@@ -163,6 +211,8 @@ do
     local p = l:sub(1, 2)
     if p == "pt" then lang = "pt" elseif p == "es" then lang = "es" end
 end
+-- called by ns.ApplyLanguage once the saved choice is known
+function ns.SetProfLang(code) if LOC[code] then lang = code end end
 local S = setmetatable({}, { __index = function(_, k)
     local v = LOC[lang][k]
     if v == nil then v = LOC.en[k] end
@@ -196,7 +246,7 @@ local issecret = issecretvalue or function() return false end
 local QMARK = "Interface\\Icons\\INV_Misc_QuestionMark"
 local DEFAULTS = {
     sel = "mining", skin = "dark", scale = 1, alpha = 0.96, fontText = 1, fontNum = 1, key = "CTRL-K", useKey = true, showAll = false, simOwned = true, autoText = false, w = 980, h = 680, logOn = true, log = {}, provider = "auto", mode = "cheap",
-    free = false, knownOnly = false, srcT = true, srcV = true, srcI = false, srcU = false, ahCut = true,
+    free = false, knownOnly = false, srcT = true, srcV = true, srcI = false, srcU = false, ahCut = true, useBank = true, simSort = "level", cal = {}, tracks = {},
     range = {},
 }
 local P -- saved settings (GatherTrailDB.prof)
@@ -297,8 +347,8 @@ local function SpellIcon(id)
     return t or QMARK
 end
 local function ItemCount(id)
-    if GetItemCount then return GetItemCount(id, true) or 0 end
-    return 0
+    local total, bank = ns.Market.Total(id, P.useBank)
+    return total, bank
 end
 
 local function Money(c)
@@ -328,16 +378,39 @@ local function ItemMeta(id)
     return a, b
 end
 
+-- The game itself says how hard a known recipe is (orange/yellow/green/grey) at the player's current skill.
+-- Trailsmith keeps those observations (P.cal) and corrects the table range of the recipe when they disagree.
+local function ApplyCal(r)
+    local low, high = r.low0 or r.low, r.high0 or r.high
+    local c = P and P.cal and P.cal[r.spell]
+    if c then
+        if c.t and c.t < high then high = c.t end
+        if c.g and c.g >= high then
+            high = ((r.ahigh or 0) > c.g) and r.ahigh or (c.g + 1)
+            if c.t and c.t < high then high = c.t end
+        end
+        if c.o and c.o >= low then
+            low = ((r.alow or 0) > c.o and (r.alow or 0) < high) and r.alow or (c.o + 1)
+        end
+        if c.y and c.y < low then low = c.y end
+        if low >= high then low = high - 1 end
+    end
+    r.low, r.high = low, high
+end
+
 local function Decode(key)
     if decoded[key] then return decoded[key], producers[key] end
     local out, prod = {}, {}
     local d = ns.RecipeData and ns.RecipeData[key]
     if d then
         for _, line in ipairs(d.recipes) do
-            local sp, rq, lo, hi, it, qt, src, si, rg, st = line:match("^(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|(%a)|(%d+)|([%d:,]*)|?(%d*)$")
+            local sp, rq, lo, hi, it, qt, src, si, rg, st, al, ah = line:match("^(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|(%a)|(%d+)|([%d:,]*)|?(%d*)|?(%d*)|?(%d*)$")
             if sp then
                 local r = { spell = tonumber(sp), req = tonumber(rq), low = tonumber(lo), high = tonumber(hi), item = tonumber(it),
-                    qty = tonumber(qt), src = src, srcItem = tonumber(si), set = tonumber(st) or 0, reag = {} }
+                    qty = tonumber(qt), src = src, srcItem = tonumber(si), set = tonumber(st) or 0, reag = {},
+                    alow = tonumber(al), ahigh = tonumber(ah) }
+                r.low0, r.high0 = r.low, r.high
+                ApplyCal(r)
                 for id, n in rg:gmatch("(%d+):(%d+)") do r.reag[#r.reag + 1] = { tonumber(id), tonumber(n) } end
                 out[#out + 1] = r
                 if r.item > 0 then
@@ -353,12 +426,12 @@ end
 
 ---------------------------------------------------------------- precos
 local PROVIDERS = {
-    { key = "auctionator", name = "Auctionator",
-      ok = function() local A = _G.Auctionator return A and A.API and A.API.v1 and A.API.v1.GetAuctionPriceByItemID and true or false end,
-      get = function(id) return _G.Auctionator.API.v1.GetAuctionPriceByItemID("Trailsmith", id) end },
     { key = "tsm", name = "TradeSkillMaster",
       ok = function() return _G.TSM_API and _G.TSM_API.GetCustomPriceValue and true or false end,
       get = function(id) return _G.TSM_API.GetCustomPriceValue("DBMarket", "i:" .. id) end },
+    { key = "auctionator", name = "Auctionator",
+      ok = function() local A = _G.Auctionator return A and A.API and A.API.v1 and A.API.v1.GetAuctionPriceByItemID and true or false end,
+      get = function(id) return _G.Auctionator.API.v1.GetAuctionPriceByItemID("Trailsmith", id) end },
     { key = "auctioneer", name = "Auctioneer",
       ok = function() local A = _G.AucAdvanced return A and A.API and A.API.GetMarketValue and true or false end,
       get = function(id)
@@ -366,6 +439,9 @@ local PROVIDERS = {
           if not link then return nil end
           return _G.AucAdvanced.API.GetMarketValue(link)
       end },
+    { key = "trailsmith", name = "Trailsmith (AH scan)",
+      ok = function() return ns.Market and ns.Market.PriceCount() > 0 end,
+      get = function(id) return ns.Market.Own(id) end },
 }
 local function ActiveProvider()
     if P.provider ~= "auto" then
@@ -402,11 +478,47 @@ local function MergedProducers()
 end
 local function ClearCaches() pcache, ccache, known = {}, {}, {} end
 
+local OWN_FRESH = 2 * 86400   -- our own scan wins over the other addons while it is at most this old
 local function MarketPrice(id)
+    local src = ns.Market.src
+    -- the median of the cheapest listings resists bait listings (a 4 copper silk to trick auto-posters)
+    if P.provider == "auto" or P.provider == "trailsmith" then
+        local v, age = ns.Market.Own(id)
+        local newer = false
+        if v and P.provider == "auto" then
+            local A = _G.Auctionator
+            if A and A.API and A.API.v1 and A.API.v1.GetAuctionAgeByItemID then
+                local okA, days = pcall(A.API.v1.GetAuctionAgeByItemID, "Trailsmith", id)
+                if okA and type(days) == "number" and days < math.floor(age / 86400) then newer = true end
+            end
+        end
+        if v and not newer and (age <= OWN_FRESH or P.provider == "trailsmith") then
+            src[id] = "Trailsmith (AH scan) " .. ns.Market.AgeText(age)
+            return v
+        end
+    end
     local pr = ActiveProvider()
-    if not pr then return nil end
+    if not pr then src[id] = nil return nil end
     local ok, v = pcall(pr.get, id)
-    if ok and type(v) == "number" and v > 0 then return v end
+    if ok and type(v) == "number" and v > 0 then
+        local age = pr.key == "trailsmith" and select(2, ns.Market.Own(id)) or nil
+        src[id] = pr.name .. (age and (" " .. ns.Market.AgeText(age)) or "")
+        return v
+    end
+    -- the chosen source has no price for this item: try the others before giving up
+    if P.provider ~= "vendor" then
+        for _, p2 in ipairs(PROVIDERS) do
+            if p2 ~= pr and p2.ok() then
+                local ok2, v2 = pcall(p2.get, id)
+                if ok2 and type(v2) == "number" and v2 > 0 then
+                    local age = p2.key == "trailsmith" and select(2, ns.Market.Own(id)) or nil
+                    src[id] = p2.name .. (age and (" " .. ns.Market.AgeText(age)) or "")
+                    return v2
+                end
+            end
+        end
+    end
+    src[id] = nil
     return nil
 end
 
@@ -417,11 +529,17 @@ local function BuyPrice(id)
     local sell, vbuy = ItemMeta(id)
     local best = vbuy > 0 and vbuy or nil
     local ah = MarketPrice(id)
+    if ah and sell > 0 and ah < sell then
+        ah = sell   -- below the vendor price: a bait or mistaken listing, not a real price
+        ns.Market.src[id] = "vendor (sell price)"
+    end
     if ah and (not best or ah < best) then best = ah end
     if P.free and not (curProd and curProd[id]) and not (vbuy > 0) then best = 0 end
     -- no market data: the vendor sell price is a floor estimate
     if not best and sell > 0 then best = sell end
     pcache[id] = best or false
+    local src = ns.Market.src
+    if best and best > 0 and not (ah and best == ah) then src[id] = (vbuy > 0 and best == vbuy) and "vendor" or (best == sell and "vendor (sell price)" or src[id]) end
     return best
 end
 
@@ -519,10 +637,15 @@ local function BuildPlan(key, from, to)
     end
     local prev
     local cur
-    for s = from, to - 1 do
+    -- acq = false: recipes the player may use; acq = true: recipes the player does not have (and whose source is
+    -- not enabled) but could obtain: they are only suggested when nothing else gives skill points
+    local function Pick(s, acq)
         local best, bestScore
         for _, r in ipairs(recipes) do
-            if s < r.high and (r.req <= s or known[r.spell]) and Allowed(r) then
+            local usable
+            if acq then usable = r.src ~= "a" and r.req <= s and not known[r.spell] and not Allowed(r)
+            else usable = (r.req <= s or known[r.spell]) and Allowed(r) end
+            if usable and s < r.high then
                 local ch = Chance(r, s)
                 if ch > 0 then
                     local i = info[r]
@@ -535,6 +658,15 @@ local function BuildPlan(key, from, to)
                 end
             end
         end
+        return best
+    end
+    for s = from, to - 1 do
+        local best = Pick(s, false)
+        local acq = false
+        if not best and not P.knownOnly then
+            best = Pick(s, true)
+            acq = best ~= nil
+        end
         if not best then
             if cur and cur.gap then cur.to = s + 1 else
                 cur = { gap = true, from = s, to = s + 1, crafts = 0, cost = 0 }
@@ -543,29 +675,56 @@ local function BuildPlan(key, from, to)
             prev = nil
         else
             local ch = Chance(best, s)
-            if cur and cur.r == best then
+            if cur and cur.r == best and (cur.acquire or false) == acq then
                 cur.to = s + 1
                 cur.crafts = cur.crafts + 1 / ch
             else
-                cur = { r = best, from = s, to = s + 1, crafts = 1 / ch }
+                cur = { r = best, from = s, to = s + 1, crafts = 1 / ch, acquire = acq }
                 plan.steps[#plan.steps + 1] = cur
             end
             prev = best
         end
     end
     local pr = ActiveProvider()
+    local later = false
+    local acqSeen = {}
     for _, st in ipairs(plan.steps) do
-        if not st.gap then
+        if st.gap then
+            if not later then plan.gap = plan.gap or st end
+            later = true
+            -- is there a recipe the other (Classic Anniversary) table says would work here?
+            for _, r in ipairs(recipes) do
+                -- 1) a recipe that covers this skill but whose source is not allowed (unknown source, quests...)
+                if not st.alt and r.req <= st.from and st.from < r.high and st.from >= r.low - 10 and not Allowed(r) then st.alt = r end
+                -- 2) a recipe the other table (Classic Anniversary) says still gives points here
+                if not st.hint and (r.req <= st.from or known[r.spell]) and Allowed(r) and (r.ahigh or 0) > st.from and st.from >= (r.alow or r.low) - 10 then st.hint = r end
+            end
+        else
             st.crafts = ceil(st.crafts - 0.0001)
             local i = info[st.r]
             st.unit, st.miss = i.cost, i.miss
             st.cost = i.cost * st.crafts
             st.value = i.value * st.crafts
             st.known = known[st.r.spell] or st.r.src == "a"
-            plan.crafts = plan.crafts + st.crafts
-            plan.cost = plan.cost + st.cost
-            plan.net = plan.net + st.value
-            if i.miss then plan.missing = true end
+            st.later = later
+            if st.acquire and not later and not acqSeen[st.r] then
+                acqSeen[st.r] = true
+                plan.acquire = plan.acquire or {}
+                plan.acquire[#plan.acquire + 1] = st.r
+                if st.r.srcItem > 0 then
+                    local rc = ItemCost(st.r.srcItem, 0)
+                    plan.mats[st.r.srcItem] = (plan.mats[st.r.srcItem] or 0) + 1
+                    if rc then plan.cost = plan.cost + rc else plan.missing = true end
+                end
+            end
+            if not later then
+                plan.crafts = plan.crafts + st.crafts
+                plan.cost = plan.cost + st.cost
+                plan.net = plan.net + st.value
+                if i.miss then plan.missing = true end
+            else
+                plan.laterCost = (plan.laterCost or 0) + st.cost
+            end
             -- expand reagents down to what must be bought
             local function Expand(id, n, depth)
                 local _, _, pr2 = ItemCost(id, 0)
@@ -576,9 +735,11 @@ local function BuildPlan(key, from, to)
                     plan.mats[id] = (plan.mats[id] or 0) + n
                 end
             end
-            for _, rg in ipairs(st.r.reag) do Expand(rg[1], rg[2] * st.crafts, 0) end
+            if not later then
+                for _, rg in ipairs(st.r.reag) do Expand(rg[1], rg[2] * st.crafts, 0) end
+            end
         end
-        plan.points = plan.points + (st.to - st.from)
+        if not later and not st.gap then plan.points = plan.points + (st.to - st.from) end
     end
     plan.net = plan.net - plan.cost
     plan.secs = plan.crafts * 3
@@ -587,6 +748,19 @@ local function BuildPlan(key, from, to)
 end
 
 ns.Prof = { BuildPlan = BuildPlan, Decode = Decode, Chance = Chance }
+do
+    local pending
+    ns.Prof.PricesChanged = function()
+        if pending then return end
+        pending = true
+        C_Timer.After(1.5, function()
+            pending = false
+            ClearCaches()
+            local u = ns.ProfUI
+            if u and u.frame and u.frame:IsShown() then u:Refresh() end
+        end)
+    end
+end
 
 ---------------------------------------------------------------- habilidade do jogador
 local nameToKey
@@ -628,6 +802,7 @@ end
 
 ---------------------------------------------------------------- interface (estilo padrao do WoW)
 local UI = { tab = "plan", top = "craft", fonts = {}, syncs = {}, factor = 1 }
+ns.ProfUI = UI
 local DEFW, DEFH, MINW, MINH = 980, 680, 900, 600
 local M, TOP, BOT, LEFTW, RIGHTW, GAP = 12, 64, 14, 200, 252, 8
 local Locate -- defined further down
@@ -638,7 +813,7 @@ local TIP_BACKDROP = {
     tile = true, tileSize = 16, edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 },
 }
 local HILITE = "Interface\\QuestFrame\\UI-QuestTitleHighlight"
-local PROVIDER_ORDER = { "auto", "auctionator", "tsm", "auctioneer", "vendor" }
+local PROVIDER_ORDER = { "auto", "tsm", "trailsmith", "auctionator", "auctioneer", "vendor" }
 
 local function TryCreate(kind, name, parent, templates)
     for _, t in ipairs(templates) do
@@ -948,12 +1123,22 @@ local function Recompute()
     r.from = max(1, min(r.from, 374))
     r.to = max(r.from + 1, min(r.to, 375))
     current = BuildPlan(key, r.from, r.to)
+    current.farmCost = nil
+    if current.net < 0 and not P.free and current.crafts > 0 then
+        P.free = true
+        local farm = BuildPlan(key, r.from, r.to)
+        P.free = false
+        current.farmCost, current.farmNet = farm.cost, farm.net
+        current = BuildPlan(key, r.from, r.to)
+        current.farmCost, current.farmNet = farm.cost, farm.net
+    end
 end
 local function BuildMatList(plan)
     local out = {}
     for id, n in pairs(plan.mats) do
         local c = ItemCost(id, 0)
-        out[#out + 1] = { id = id, need = ceil(n - 0.0001), have = ItemCount(id), cost = c }
+        local have, bank = ItemCount(id)
+        out[#out + 1] = { id = id, need = ceil(n - 0.0001), have = have, bank = bank, cost = c }
     end
     table.sort(out, function(a, b)
         local ta, tb = (a.cost or 0) * a.need, (b.cost or 0) * b.need
@@ -973,9 +1158,24 @@ local function BuildRecList(key, filter)
         if filter == "" or name:lower():find(filter, 1, true) then
             local cost, miss = RecipeCost(r)
             if known[r.spell] == nil then known[r.spell] = SpellKnown(r.spell) end
-            out[#out + 1] = { r = r, cost = cost, miss = miss, known = known[r.spell] }
+            local profit
+            if r.item > 0 and not miss then profit = OutputValue(r) - cost end
+            out[#out + 1] = { r = r, cost = cost, miss = miss, known = known[r.spell], profit = profit, name = name }
         end
     end
+    local mode = P.simSort
+    table.sort(out, function(a, b)
+        if mode == "profit" then
+            if (a.profit ~= nil) ~= (b.profit ~= nil) then return a.profit ~= nil end
+            if a.profit and a.profit ~= b.profit then return a.profit > b.profit end
+        elseif mode == "name" then
+            if a.name ~= b.name then return a.name < b.name end
+        end
+        if a.r.req ~= b.r.req then return a.r.req < b.r.req end
+        if a.r.low ~= b.r.low then return a.r.low < b.r.low end
+        if a.name ~= b.name then return a.name < b.name end
+        return a.r.spell < b.r.spell
+    end)
     return out
 end
 
@@ -1016,7 +1216,8 @@ local function FillPlanRow(row, st, idx)
         row.icon:SetTexture(QMARK)
         row.t1:SetText(("|cffff5050%d – %d|r"):format(st.from, st.to))
         row.t2:SetTextColor(1, 0.6, 0.5)
-        row.t2:SetText(S.NOREC:format(st.from, st.to))
+        row.t2:SetText(st.alt and S.NOREC_SRC:format(st.from, st.to, SpellName(st.alt.spell) or "?")
+            or st.hint and S.NOREC_HINT:format(st.from, st.to, SpellName(st.hint.spell) or "?") or S.NOREC:format(st.from, st.to))
         row.t2:SetPoint("RIGHT", row, "RIGHT", -10, 0)
         row.cost:SetText("")
         row.sub:SetText("")
@@ -1030,6 +1231,11 @@ local function FillPlanRow(row, st, idx)
     local col = BandColor(r, st.from)
     local name = SpellName(r.spell) or (r.item > 0 and ItemName(r.item)) or ("#" .. r.spell)
     local tag = st.known and "" or ("  |cffff9933[" .. S.NEEDLEARN .. "]|r")
+    if st.later then tag = tag .. "  |cffff9933[" .. S.LATER .. "]|r" end
+    if st.acquire then
+        local lbl = (r.srcItem or 0) > 0 and ItemName(r.srcItem) or SrcLabel(r)
+        tag = tag .. "  |cffffd100[" .. S.GET_RECIPE:format(lbl or "?") .. "]|r"
+    end
     row.t1:SetText(("|c%s%d – %d|r   %s  |cffffffff×%d|r%s"):format(col, st.from, st.to, name, st.crafts, tag))
     row.t2:SetTextColor(0.75, 0.75, 0.75)
     row.t2:SetText(MatLine(r, st.crafts))
@@ -1079,7 +1285,13 @@ end
 local function MakeMatRow(parent)
     local row = RowBase(parent)
     MakeMatCols(row, "GameFontHighlight", "num", row.icon)
-    Tip(row, function(tt, self) if self.id then tt:SetHyperlink("item:" .. self.id) end end)
+    Tip(row, function(tt, self)
+        if not self.id then return end
+        tt:SetHyperlink("item:" .. self.id)
+        local src = ns.Market.src[self.id]
+        if src then tt:AddLine(S.PRICE_FROM:format(src), 0.7, 0.7, 0.7) end
+        if (self.bank or 0) > 0 then tt:AddLine(S.BANK_TIP:format(self.bagn or 0, self.bank), 0.4, 0.8, 1) end
+    end)
     return row
 end
 local function FillMatRow(row, m, idx)
@@ -1088,7 +1300,9 @@ local function FillMatRow(row, m, idx)
     row.icon:SetTexture(ItemIcon(m.id))
     row.name:SetText(ItemName(m.id) or ("#" .. m.id))
     row.need:SetText(tostring(m.need))
-    row.have:SetText(tostring(m.have))
+    row.bank = m.bank
+    row.bagn = m.have - (m.bank or 0)
+    row.have:SetText((m.bank or 0) > 0 and ("|cff66ccff" .. m.have .. "|r") or tostring(m.have))
     local miss = max(0, m.need - m.have)
     row.miss:SetText(miss > 0 and ("|cffff8080" .. miss .. "|r") or "|cff40c040OK|r")
     row.total:SetText(m.cost and Money(m.cost * miss) or ("|cffff8080" .. S.NOPRICE .. "|r"))
@@ -1424,10 +1638,11 @@ local function StartCapture(onDone)
 end
 
 ---------------------------------------------------------------- simulacao
+local Verdict
 local function Close() if UI.frame then UI.frame:Hide() end end
 local function Heading(parent, text) return Label(parent, text, "GameFontNormal") end
 
-local function Have(id) return (GetItemCount and GetItemCount(id)) or 0 end
+local function Have(id) return (ItemCount(id)) end
 
 -- full material tree for crafting `count` of recipe r (using what is in the bags first)
 local function SimBuild(key, r, count, useOwned)
@@ -1447,7 +1662,7 @@ local function SimBuild(key, r, count, useOwned)
         if useOwned then owned[id] = avail - use end
         local remaining = qty - use
         local _, _, prod = ItemCost(id, 0)
-        local line = { id = id, need = qty, have = have, depth = depth, remaining = remaining }
+        local line = { id = id, need = qty, have = have, bank = select(2, ItemCount(id)), depth = depth, remaining = remaining }
         lines[#lines + 1] = line
         if remaining > 0 then
             if prod and depth < 3 then
@@ -1469,7 +1684,7 @@ local function SimBuild(key, r, count, useOwned)
         local c = ItemCost(id, 0)
         local total = c and c * n or nil
         if total then cost = cost + total else missing = true end
-        list[#list + 1] = { id = id, n = n, unit = c, total = total, have = Have(id) }
+        list[#list + 1] = { id = id, n = n, unit = c, total = total, have = Have(id), bank = select(2, ItemCount(id)), src = ns.Market.src[id] }
     end
     table.sort(list, function(a, b)
         if (a.total or 0) ~= (b.total or 0) then return (a.total or 0) > (b.total or 0) end
@@ -1613,11 +1828,23 @@ end
 
 ---------------------------------------------------------------- janelinha fixa (rastreador)
 local Tracker = {}
-local TRACK_LINES = 22
+local TRACK_LINES = 70
+
+-- every pinned thing is a section: { kind = "craft", key, spell, count } or { kind = "plan", key, from, to, mats = { {id, n} } }
+local function TrackList()
+    if not P then return {} end
+    P.tracks = P.tracks or {}
+    if P.track then   -- the old single pin becomes the first section
+        P.tracks[#P.tracks + 1] = { kind = "craft", key = P.track.key, spell = P.track.spell, count = P.track.count }
+        P.track = nil
+    end
+    return P.tracks
+end
+
 function Tracker:Build()
     if self.frame then return end
     local f = Panel(UIParent, 0.88)
-    f:SetSize(310, 120)
+    f:SetSize(320, 120)
     f:SetFrameStrata("HIGH")
     f:SetClampedToScreen(true)
     f:SetMovable(true)
@@ -1631,29 +1858,38 @@ function Tracker:Build()
     end)
     local pos = P and P.trackPos
     if pos then f:SetPoint(pos[1], UIParent, pos[2], pos[3], pos[4]) else f:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -240, -300) end
-    f.title = Label(f, "", "GameFontNormal")
+    f.title = Label(f, S.TITLE, "GameFontNormal")
     f.title:SetPoint("TOPLEFT", 12, -10)
     f.title:SetPoint("RIGHT", -30, 0)
     f.title:SetWordWrap(false)
-    f.close = Btn(f, "x", 18, 18, function() if P then P.track = nil end Tracker:Refresh() end)
+    f.close = Btn(f, "x", 18, 18, function() if P then P.tracks = {} P.track = nil end Tracker:Refresh() end)
     f.close:SetPoint("TOPRIGHT", -6, -6)
-    f.rows = {}
+    f.lines = {}
     for i = 1, TRACK_LINES do
-        local fs = Label(f, "", "GameFontHighlightSmall")
-        fs:SetPoint("RIGHT", -12, 0)
-        fs:SetWordWrap(false)
-        f.rows[i] = fs
+        local ln = { fs = Label(f, "", "GameFontHighlightSmall") }
+        ln.fs:SetWordWrap(false)
+        ln.x = Btn(f, "x", 14, 14, function(self2)
+            if type(self2.index) == "number" and P and P.tracks then table.remove(P.tracks, self2.index) end
+            Tracker:Refresh()
+        end)
+        ln.x:Hide()
+        f.lines[i] = ln
     end
     f.create = MakeCreateButton(f, S.TRACK_OPEN, 130, 22)
     f.create.tag = "tracker"
     f.create:SetPoint("BOTTOMLEFT", 10, 10)
     f.sim = Btn(f, S.TAB_SIM, 90, 22, function()
-        local t = P and P.track
+        local list = TrackList()
+        local t = list[#list]
         if not t then return end
         P.sel = t.key
-        local r = RecipeOf(t.key, t.spell)
-        ns.OpenProf(nil, "sim")
-        if r then UI:OpenSim(r, t.count) end
+        if t.kind == "craft" then
+            local r = RecipeOf(t.key, t.spell)
+            ns.OpenProf(nil, "sim")
+            if r then UI:OpenSim(r, t.count) end
+        else
+            ns.OpenProf(nil, "craft")
+        end
     end)
     f.sim:SetPoint("BOTTOMRIGHT", -10, 10)
     self.frame = f
@@ -1663,51 +1899,138 @@ function Tracker:Build()
 end
 
 function Tracker:Refresh()
-    local t = P and P.track
-    if not t or not t.spell then
+    local list = TrackList()
+    -- forget sections that cannot be shown any more
+    for i = #list, 1, -1 do
+        local t = list[i]
+        if t.kind == "plan" then
+            if not t.mats or #t.mats == 0 then table.remove(list, i) end
+        elseif not (t.spell and RecipeOf(t.key, t.spell)) then
+            table.remove(list, i)
+        end
+    end
+    if #list == 0 then
         if self.frame then self.frame:Hide() end
         return
     end
-    local r = RecipeOf(t.key, t.spell)
-    if not r then if self.frame then self.frame:Hide() end return end
     self:Build()
     local f = self.frame
-    local res = SimBuild(t.key, r, t.count or 1, true)
-    local name = SpellName(r.spell) or ("#" .. r.spell)
-    local allDone = true
-    local n = 0
     local rh = floor(17 * (UI.factor or 1) + 0.5)
-    for _, ln in ipairs(res.lines) do
-        if n >= TRACK_LINES then break end
+    local n = 0
+    local function Line(text, section)
+        if n >= TRACK_LINES then return end
         n = n + 1
-        local done = ln.have >= ln.need
-        if ln.depth == 0 and not done then allDone = false end
-        local indent = string.rep("    ", ln.depth)
-        local col = done and "|cff40ff40" or (ln.depth == 0 and "|cffffffff" or "|cffc0c0c0")
-        local tag = (ln.prod and not done) and ("  |cffffd100(" .. S.TRACK_CRAFT .. ")|r") or ""
-        local row = f.rows[n]
-        row:ClearAllPoints()
-        row:SetPoint("TOPLEFT", 14, -34 - (n - 1) * rh)
-        row:SetPoint("RIGHT", -12, 0)
-        row:SetText(("%s%s%s|r  %d/%d%s"):format(indent, col, ItemName(ln.id) or ("#" .. ln.id), ln.have, ln.need, tag))
-        row:Show()
+        local ln = f.lines[n]
+        local y = -34 - (n - 1) * rh
+        ln.fs:ClearAllPoints()
+        ln.fs:SetPoint("TOPLEFT", 14, y)
+        ln.fs:SetPoint("RIGHT", section and -30 or -12, 0)
+        ln.fs:SetText(text)
+        ln.fs:Show()
+        if section then
+            ln.x:ClearAllPoints()
+            ln.x:SetPoint("TOPRIGHT", -8, y + 2)
+            ln.x.index = section
+            ln.x:Show()
+        else
+            ln.x:Hide()
+        end
     end
-    for i = n + 1, TRACK_LINES do f.rows[i]:Hide() end
-    f.title:SetText((allDone and "|cff40ff40" or "") .. name .. " ×" .. (t.count or 1) .. (allDone and ("  " .. S.TRACK_DONE .. "|r") or ""))
+    local function Mat(id, have, need, bank, indent, tag)
+        local done = have >= need
+        local col = done and "|cff40ff40" or (indent == "" and "|cffffffff" or "|cffc0c0c0")
+        tag = tag or ""
+        if (bank or 0) > 0 and not done then tag = tag .. "  |cff66ccff(" .. S.TRACK_BANK:format(bank) .. ")|r" end
+        return ("%s%s%s|r  %d/%d%s"):format(indent, col, ItemName(id) or ("#" .. id), have, need, tag), done
+    end
+    for i, t in ipairs(list) do
+        if i > 1 then Line("") end   -- a blank line between pinned things
+        if t.kind == "plan" then
+            local all = true
+            local body = {}
+            for _, m in ipairs(t.mats) do
+                local have, bank = ItemCount(m[1])
+                local text, done = Mat(m[1], have, m[2], bank, "")
+                if not done then all = false end
+                body[#body + 1] = text
+            end
+            Line((all and "|cff40ff40" or "|cffffd100") .. ("%s %d–%d"):format(ProfLabel(t.key), t.from, t.to) .. "|r  |cff909090" .. S.TRACK_PLAN .. "|r"
+                .. (all and ("  |cff40ff40" .. S.TRACK_DONE .. "|r") or ""), i)
+            for _, text in ipairs(body) do Line(text) end
+        else
+            local r = RecipeOf(t.key, t.spell)
+            local res = SimBuild(t.key, r, t.count or 1, true)
+            local allDone = true
+            local body = {}
+            for _, ln in ipairs(res.lines) do
+                local done = ln.have >= ln.need
+                if ln.depth == 0 and not done then allDone = false end
+                local tag = (ln.prod and not done) and ("  |cffffd100(" .. S.TRACK_CRAFT .. ")|r") or ""
+                body[#body + 1] = (Mat(ln.id, ln.have, ln.need, ln.bank, string.rep("    ", ln.depth), tag))
+            end
+            local name = SpellName(r.spell) or ("#" .. r.spell)
+            Line((allDone and "|cff40ff40" or "|cffffd100") .. name .. " ×" .. (t.count or 1) .. "|r" .. (allDone and ("  |cff40ff40" .. S.TRACK_DONE .. "|r") or ""), i)
+            for _, text in ipairs(body) do Line(text) end
+        end
+    end
+    for i = n + 1, TRACK_LINES do f.lines[i].fs:Hide() f.lines[i].x:Hide() end
     f:SetHeight(34 + n * rh + 46)
-    SetCreateTarget(f.create, t.key, r, t.count)
+    local last = list[#list]
+    SetCreateTarget(f.create, last.key, last.kind == "craft" and RecipeOf(last.key, last.spell) or nil, last.kind == "craft" and last.count or nil)
     f:Show()
 end
 ns.Prof.Tracker = Tracker
 
+-- refresh soon (not on every bag event)
+function Tracker:Soon()
+    if self.pend then return end
+    self.pend = true
+    C_Timer.After(0.4, function() self.pend = false Tracker:Refresh() end)
+end
+
+function Tracker:CraftIndex(spell, count)
+    for i, t in ipairs(TrackList()) do
+        if t.kind == "craft" and t.spell == spell and (count == nil or t.count == count) then return i end
+    end
+end
+function Tracker:PlanIndex(key, from, to)
+    for i, t in ipairs(TrackList()) do
+        if t.kind == "plan" and t.key == key and t.from == from and t.to == to then return i end
+    end
+end
+
 local function PinRecipe(key, r, count)
     if not P then return end
-    if P.track and P.track.spell == r.spell and P.track.count == count then
-        P.track = nil
-        Log("tracker removed")
+    local list = TrackList()
+    local same = Tracker:CraftIndex(r.spell, count)
+    if same then
+        table.remove(list, same)
+        Log("tracker removed: %s", tostring(SpellName(r.spell)))
     else
-        P.track = { key = key, spell = r.spell, count = count }
-        Log("tracker set: %s x%d", tostring(SpellName(r.spell)), count)
+        local other = Tracker:CraftIndex(r.spell)   -- same recipe, another quantity: update that section
+        if other then
+            list[other].count = count
+        else
+            list[#list + 1] = { kind = "craft", key = key, spell = r.spell, count = count }
+        end
+        Log("tracker set: %s x%d (%d pinned)", tostring(SpellName(r.spell)), count, #list)
+    end
+    Tracker:Refresh()
+end
+
+-- pins every material of the leveling plan on screen
+function Tracker:TogglePlan(p)
+    if not P or not p or p.to <= p.from then return end
+    local list = TrackList()
+    local at = Tracker:PlanIndex(p.key, p.from, p.to)
+    if at then
+        table.remove(list, at)
+        Log("tracker removed: plan %s %d-%d", p.key, p.from, p.to)
+    else
+        local mats = {}
+        for _, m in ipairs(BuildMatList(p)) do mats[#mats + 1] = { m.id, m.need } end
+        list[#list + 1] = { kind = "plan", key = p.key, from = p.from, to = p.to, mats = mats }
+        Log("tracker set: plan %s %d-%d (%d materials)", p.key, p.from, p.to, #mats)
     end
     Tracker:Refresh()
 end
@@ -1721,7 +2044,7 @@ function UI:LayoutCraft()
     local cw = f:GetWidth() - 2 * M - LEFTW - RIGHTW - 2 * GAP
     local w = floor((cw - 4 * 6) / 5)
     local ch = floor(44 * max(1, UI.factor or 1))
-    self.cardY = 54
+    self.cardY = 86
     for i, key in ipairs({ "points", "crafts", "cost", "sell", "net" }) do
         local c = self.cards[key]
         c:ClearAllPoints()
@@ -1741,6 +2064,35 @@ local function MoneySigned(c)
     if not c then return "?" end
     if c < 0 then return "|cffff6060-" .. Money(-c) .. "|r" end
     return "|cff40ff40+" .. Money(c) .. "|r"
+end
+
+Verdict = function(p, key)
+    local lines = {}
+    local g = p.gap
+    if g then
+        lines[#lines + 1] = "|cffff5050" .. S.V_GAP:format(g.from, g.to, ProfLabel(key)) .. "|r"
+    end
+    if p.acquire then
+        local names = {}
+        for _, r in ipairs(p.acquire) do
+            local lbl = (r.srcItem or 0) > 0 and ItemName(r.srcItem) or (SpellName(r.spell) or "?")
+            names[#names + 1] = lbl .. " (" .. (r.src == "v" and S.SRC_V or r.src == "i" and S.V_AH or S.SRC_U) .. ")"
+        end
+        lines[#lines + 1] = "|cffffd100" .. S.V_GET:format(table.concat(names, ", ")) .. "|r"
+    end
+    if p.crafts > 0 and not p.missing then
+        local per = p.cost / math.max(1, p.points)
+        if p.net < 0 then
+            if p.farmCost and p.farmCost < p.cost then
+                lines[#lines + 1] = "|cffffd100" .. S.V_LOSS:format(Money(p.cost), Money(-p.net), Money(p.farmCost)) .. "|r"
+            else
+                lines[#lines + 1] = "|cffffd100" .. S.V_LOSS2:format(Money(p.cost), Money(-p.net)) .. "|r"
+            end
+        else
+            lines[#lines + 1] = "|cff40c040" .. S.V_OK:format(Money(p.cost), Money(per)) .. "|r"
+        end
+    end
+    return table.concat(lines, "\n")
 end
 
 function UI:LayoutSim()
@@ -1824,7 +2176,7 @@ function UI:RefreshSim()
     if #res.buy == 0 then items[#items + 1] = { kind = "note", text = S.SIM_NOBUY } end
     for _, b in ipairs(res.buy) do items[#items + 1] = { kind = "buy", b = b } end
     self.simSteps:SetData(items, true)
-    d.pin:SetText((P.track and P.track.spell == r.spell and P.track.count == qty) and S.BTN_UNPIN or S.BTN_PIN)
+    d.pin:SetText(Tracker:CraftIndex(r.spell, qty) and S.BTN_UNPIN or S.BTN_PIN)
     FitBtn(d.pin, 150)
     SetCreateTarget(d.create, key, r, qty)
     self.simRes = res
@@ -1934,7 +2286,10 @@ function UI:Refresh()
     self.cards.net.v:SetText(MoneySigned(p.net))
     self.cards.net.cap:SetText(p.net >= 0 and S.PROFIT or S.LOSS)
     self.priceLine:SetText(p.provider and S.PRICES:format(p.provider) or S.PRICES_NONE)
-    self.noProf:SetText(sk and "" or S.NOPROF)
+    self.noProf:SetText("")
+    self.verdict:SetText((sk and "" or ("|cffff9933" .. S.NOPROF .. "|r\n")) .. Verdict(p, key))
+    self.pinPlan:SetText(Tracker:PlanIndex(p.key, p.from, p.to) and S.BTN_UNPIN_PLAN or S.BTN_PIN_PLAN)
+    FitBtn(self.pinPlan, 130)
     self.planList:SetData(p.steps, true)
     self.footCost:SetText(S.CARD_BUY .. ": " .. (p.missing and (Money(p.cost) .. " |cffff8080+?|r") or Money(p.cost)))
     self.matList:SetData(BuildMatList(p), true)
@@ -2019,7 +2374,9 @@ local function FillSimRow(row, d, idx)
     local col = BandColor(r, sk and sk.rank or 1)
     local name = SpellName(r.spell) or (r.item > 0 and ItemName(r.item)) or ("#" .. r.spell)
     row.name:SetText(("|c%s%s|r"):format(col, name))
-    row.tag:SetText(d.known and ("|cff40c040" .. S.KNOWN .. "|r") or ("|cff909090" .. SrcLabel(r) .. "|r"))
+    local extra = ("|cffc0c0c0%d|r"):format(r.req)
+    if d.profit then extra = extra .. "  " .. (d.profit >= 0 and "|cff40c040+" or "|cffff6060") .. Money(d.profit) .. "|r" end
+    row.tag:SetText(extra .. "  " .. (d.known and ("|cff40c040" .. S.KNOWN .. "|r") or ("|cff909090" .. SrcLabel(r) .. "|r")))
     if UI.simSel == r then
         if row.bg.SetColorTexture then row.bg:SetColorTexture(1, 0.8, 0.2, 0.18) else row.bg:SetTexture(1, 0.8, 0.2, 0.18) end
     end
@@ -2091,7 +2448,8 @@ local function FillStepRow(row, it, idx)
         row.icon:SetTexture(ItemIcon(b.id))
         row.link = "item:" .. b.id
         row.t1:SetText(("|cffffffff%d×|r %s"):format(b.n, ItemName(b.id) or ("#" .. b.id)))
-        row.t2:SetText(("%s  ·  %s"):format(S.FOOT_HAVE:format(b.have), b.unit and (S.UNIT .. ": " .. Money(b.unit)) or S.NOPRICE))
+        local hv = (b.bank or 0) > 0 and S.FOOT_HAVE_BANK:format(b.have - b.bank, b.bank) or S.FOOT_HAVE:format(b.have)
+        row.t2:SetText(("%s  ·  %s%s"):format(hv, b.unit and (S.UNIT .. ": " .. Money(b.unit)) or S.NOPRICE, b.src and ("  ·  |cff909090" .. b.src .. "|r") or ""))
         row.right:SetText(b.total and Money(b.total) or ("|cffff8080" .. S.NOPRICE .. "|r"))
     end
 end
@@ -2155,6 +2513,15 @@ function UI:BuildInfo(f)
 end
 
 ---------------------------------------------------------------- construcao
+function UI:RefreshPrices()
+    ClearCaches()
+    Log("prices refreshed by hand")
+    LogOpt("refresh prices", "click")
+    self:Refresh()
+    local n = ns.Market.PriceCount()
+    print("|cffffd100Trailsmith:|r " .. S.REFRESHED:format(n))
+end
+
 function UI:BuildCraft(f)
     local lp = Panel(f, 0.7)
     lp:SetPoint("TOPLEFT", M, -TOP)
@@ -2220,13 +2587,15 @@ function UI:BuildCraft(f)
     st.items[#st.items].gapBefore = 10
     Chk(S.OPT_GATHER, "free")
     Chk(S.OPT_AHCUT, "ahCut")
+    Chk(S.OPT_BANK, "useBank")
     self.provBtn = Btn(rp, "", RIGHTW - 20, 22, function()
         local i = 1
         for n, k in ipairs(PROVIDER_ORDER) do if k == P.provider then i = n end end
         P.provider = PROVIDER_ORDER[i % #PROVIDER_ORDER + 1]
         UI:Refresh()
     end)
-    st:Add(self.provBtn, 22, 0, 12, true)
+    st:Add(self.provBtn, 22, 0, 4, true)
+    st.items[#st.items].gapBefore = st.items[#st.items].gapBefore
     self.openCraft = MakeCreateButton(rp, S.BTN_CRAFTWIN, RIGHTW - 20, 24)
     self.openCraft.tag = "side panel"
     st:Add(self.openCraft, 24, 0, 0, true)
@@ -2296,6 +2665,10 @@ function UI:BuildCraft(f)
         UI:Refresh()
     end)
     maxb:SetPoint("LEFT", mine, "RIGHT", 6, 0)
+    self.topRef = Btn(body, S.BTN_REFRESH, 130, 22, function() UI:RefreshPrices() end)
+    self.topRef:SetPoint("LEFT", maxb, "RIGHT", 6, 0)
+    FitBtn(self.topRef, 110)
+    Tip(self.topRef, function(tt) tt:SetText(S.REFRESH_TIP, 1, 1, 1, true) end)
     self.priceLine = Label(body, "", "GameFontHighlightSmall")
     self.priceLine:SetPoint("TOPRIGHT", -4, -10)
     self.priceLine:SetJustifyH("RIGHT")
@@ -2305,6 +2678,12 @@ function UI:BuildCraft(f)
     self.noProf:SetPoint("RIGHT", -4, 0)
     self.noProf:SetWordWrap(false)
     self.noProf:SetTextColor(1, 0.6, 0.3)
+    self.verdict = Label(body, "", "GameFontHighlightSmall")
+    self.verdict:SetPoint("TOPLEFT", 4, -34)
+    self.verdict:SetPoint("RIGHT", -4, 0)
+    self.verdict:SetWordWrap(true)
+    self.verdict:SetJustifyV("TOP")
+    self.verdict:SetHeight(46)
 
     self.cards = {}
     local defs = { { "points", S.CARD_POINTS }, { "crafts", S.CARD_CRAFTS }, { "cost", S.CARD_BUY }, { "sell", S.CARD_SELL }, { "net", S.PROFIT } }
@@ -2330,11 +2709,14 @@ function UI:BuildCraft(f)
     foot:SetPoint("BOTTOMLEFT", 0, 0)
     foot:SetPoint("BOTTOMRIGHT", 0, 0)
     self.planFoot = foot
-    local ft = Label(foot, S.MATS_TOTAL, "GameFontNormal")
+    local ft = Label(foot, S.MATS_TOTAL .. "  |cff909090(" .. S.AVERAGE .. ")|r", "GameFontNormal")
     ft:SetPoint("TOPLEFT", 10, -8)
     self.footCost = Label(foot, "", "GameFontHighlight", "num")
     self.footCost:SetPoint("TOPRIGHT", -12, -8)
     self.footCost:SetJustifyH("RIGHT")
+    self.pinPlan = Btn(foot, S.BTN_PIN_PLAN, 150, 20, function() Tracker:TogglePlan(current) UI:Refresh() end)
+    self.pinPlan:SetPoint("RIGHT", self.footCost, "LEFT", -14, 0)
+    Tip(self.pinPlan, function(tt) tt:SetText(S.PIN_PLAN_TIP, 1, 1, 1, true) end)
     local mh = CreateFrame("Frame", nil, foot)
     mh:SetPoint("TOPLEFT", 6, -28)
     mh:SetPoint("TOPRIGHT", -24, -28)
@@ -2380,7 +2762,19 @@ function UI:BuildSim(f)
     RegFont(self.simSearch, nil, "GameFontHighlight")
     self.simSearch:SetScript("OnTextChanged", function(_, user) if user then UI:Refresh() end end)
     self.simSearch:SetScript("OnEscapePressed", function(s2) s2:ClearFocus() end)
-    self.simList = NewList(lp, 40, function() return UI.frame:GetHeight() - TOP - BOT end, MakeSimRow, FillSimRow, LayoutSimRow, 38)
+    self.simSortBtn = Btn(lp, "", 112, 22, function()
+        local nxt = { level = "profit", profit = "name", name = "level" }
+        P.simSort = nxt[P.simSort] or "level"
+        LogOpt("simulator order", P.simSort)
+        UI:Refresh()
+    end)
+    self.simSortBtn:SetPoint("TOPLEFT", 10, -40)
+    self.simRefBtn = Btn(lp, S.BTN_REFRESH, 112, 22, function() UI:RefreshPrices() end)
+    self.simRefBtn:SetPoint("LEFT", self.simSortBtn, "RIGHT", 6, 0)
+    self.syncs[#self.syncs + 1] = function()
+        self.simSortBtn:SetText(S["SORT_" .. (P.simSort or "level"):upper()] or "")
+    end
+    self.simList = NewList(lp, 68, function() return UI.frame:GetHeight() - TOP - BOT end, MakeSimRow, FillSimRow, LayoutSimRow, 38)
 
     local dp = Panel(sp, 0.7)
     dp:SetPoint("TOPLEFT", self.simLeftW + GAP, 0)
@@ -2530,6 +2924,30 @@ function UI:BuildSettings(pane)
     self.setStack = st
     st:Add(Label(pane, S.SETTINGS, "GameFontNormalLarge"), 22, 0, 8)
     st:Add(Check(pane, S.OPT_SHOWALL, function() return P.showAll end, function(v) P.showAll = v UI:Refresh() end), 24, 0, 4)
+    local LANGS = { "auto", "en", "es", "pt" }
+    local LANGNAME = { auto = S.LANG_AUTO, en = "English", es = "Español", pt = "Português" }
+    local function LangNow() local c = _G.GatherTrailDB and _G.GatherTrailDB.lang return LANGNAME[c] and c or "auto" end
+    self.langBtn = Btn(pane, "", 300, 22, function()
+        local cur = LangNow()
+        local nxt = "auto"
+        for i, c in ipairs(LANGS) do if c == cur then nxt = LANGS[i % #LANGS + 1] end end
+        _G.GatherTrailDB.lang = (nxt ~= "auto") and nxt or nil
+        if ns.ApplyLanguage then ns.ApplyLanguage() end
+        LogOpt("language", nxt)
+        UI.langPending = true
+        UI:Refresh()
+    end)
+    st:Add(self.langBtn, 22, 0, 4)
+    self.langApply = Btn(pane, S.LANG_APPLY, 300, 22, function() ReloadUI() end)
+    st:Add(self.langApply, 22, 0, 4)
+    self.langNote = Label(pane, S.LANG_NOTE, "GameFontHighlightSmall")
+    self.langNote:SetTextColor(0.75, 0.75, 0.75)
+    self.langNote:SetJustifyV("TOP")
+    st:Add(self.langNote, 30, 4, 12, true)
+    self.syncs[#self.syncs + 1] = function()
+        self.langBtn:SetText(S.LANG_BTN:format(LANGNAME[LangNow()] or "?"))
+        self.langApply:SetShown(UI.langPending and true or false)
+    end
     st:Add(Check(pane, S.OPT_MM, function() return not P.mmHide end, function(v) P.mmHide = not v if ns.UpdateProfMinimap then ns.UpdateProfMinimap() end end), 24, 0, 12)
     st:Add(Check(pane, S.KEY_USE, function() return P.useKey end, function(v) P.useKey = v ApplyKey() UI:Refresh() end), 24, 0, 6)
     self.keyBtn = Btn(pane, "", 300, 22, function(b)
@@ -2616,8 +3034,8 @@ function UI:Build()
     -- top tabs
     self.topBtns = {}
     for i, t in ipairs({ { "craft", S.TAB_LEVEL }, { "sim", S.TAB_SIM }, { "gather", S.TAB_GATHER }, { "tutor", S.TAB_TUTOR }, { "settings", S.SETTINGS } }) do
-        local b = Btn(f, t[2], 120, 24, function() UI.top = t[1] UI:Refresh() end)
-        b:SetPoint("TOPLEFT", M + (i - 1) * 122, -34)
+        local b = Btn(f, t[2], 140, 24, function() UI.top = t[1] UI:Refresh() end)
+        b:SetPoint("TOPLEFT", M + (i - 1) * 142, -34)
         b.top = t[1]
         self.topBtns[i] = b
     end
@@ -2711,7 +3129,99 @@ function ns.OpenProf(arg, top, sub)
     if UI.frame:IsShown() and arg == "" then UI.frame:Hide() else UI.frame:Show() UI:Refresh() end
 end
 
+-- Reads the difficulty colour the game shows for every known recipe and corrects the table where it disagrees.
+do
+    local DIFF = { optimal = 0, medium = 1, easy = 2, trivial = 3 }
+    local idx
+    local busyCal = false
+    local function Index()
+        if idx then return idx end
+        idx = {}
+        for _, p in ipairs(PROFS) do
+            if not p.gather then
+                for _, r in ipairs(Decode(p.key)) do idx[r.spell] = { r = r, key = p.key } end
+            end
+        end
+        return idx
+    end
+    local function Collect()
+        local out = {}
+        if GetNumTradeSkills and GetTradeSkillInfo and GetTradeSkillRecipeLink then
+            for i = 1, (GetNumTradeSkills() or 0) do
+                local _, typ = GetTradeSkillInfo(i)
+                if typ and DIFF[typ] then
+                    local link = GetTradeSkillRecipeLink(i)
+                    local sp = link and tonumber(link:match("enchant:(%d+)") or link:match("spell:(%d+)"))
+                    if sp then out[#out + 1] = { sp, DIFF[typ] } end
+                end
+            end
+        end
+        if GetNumCrafts and GetCraftInfo and GetCraftRecipeLink then
+            for i = 1, (GetNumCrafts() or 0) do
+                local _, _, typ = GetCraftInfo(i)
+                if typ and DIFF[typ] then
+                    local link = GetCraftRecipeLink(i)
+                    local sp = link and tonumber(link:match("enchant:(%d+)") or link:match("spell:(%d+)"))
+                    if sp then out[#out + 1] = { sp, DIFF[typ] } end
+                end
+            end
+        end
+        if C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs and C_TradeSkillUI.GetRecipeInfo and #out == 0 then
+            for _, id in ipairs(C_TradeSkillUI.GetAllRecipeIDs() or {}) do
+                local info = C_TradeSkillUI.GetRecipeInfo(id)
+                if info and info.learned and type(info.relativeDifficulty) == "number" then out[#out + 1] = { id, info.relativeDifficulty } end
+            end
+        end
+        return out
+    end
+    function ns.Prof.Calibrate()
+        if busyCal or not P then return end
+        busyCal = true
+        local ok, err = pcall(function()
+            ReadSkills()
+            local ix = Index()
+            P.cal = P.cal or {}
+            local read, changed = 0, 0
+            for _, o in ipairs(Collect()) do
+                local e = ix[o[1]]
+                local sk = e and skills[e.key]
+                if sk then
+                    read = read + 1
+                    local c = P.cal[o[1]]
+                    if not c then c = {} P.cal[o[1]] = c end
+                    local sv, d = sk.rank, o[2]
+                    local before = (c.g or 0) * 1000000 + (c.t or 0) * 1000 + (c.o or 0) + (c.y or 0) * 7
+                    if d < 3 then c.g = max(c.g or 0, sv) else c.t = min(c.t or 9999, sv) end
+                    if d == 0 then c.o = max(c.o or 0, sv) end
+                    if d >= 1 then c.y = min(c.y or 9999, sv) end
+                    local oldLow, oldHigh = e.r.low, e.r.high
+                    ApplyCal(e.r)
+                    if e.r.low ~= oldLow or e.r.high ~= oldHigh then
+                        changed = changed + 1
+                        Log("calibration: %s now %d-%d (was %d-%d) after the game showed difficulty %d at skill %d",
+                            tostring(SpellName(o[1])), e.r.low, e.r.high, oldLow, oldHigh, d, sv)
+                    end
+                end
+            end
+            if read > 0 then Log("calibration: %d recipes read from the game window, %d corrected", read, changed) end
+            if changed > 0 then
+                ClearCaches()
+                if UI.frame and UI.frame:IsShown() then UI:Refresh() end
+            end
+        end)
+        busyCal = false
+        if not ok then Log("calibration failed: %s", tostring(err)) end
+    end
+    local calPending = false
+    function ns.Prof.CalibrateSoon()
+        if calPending then return end
+        calPending = true
+        C_Timer.After(0.6, function() calPending = false ns.Prof.Calibrate() end)
+    end
+end
+
 local ev = CreateFrame("Frame")
+for _, e in ipairs({ "TRADE_SKILL_UPDATE", "CRAFT_SHOW", "CRAFT_UPDATE" }) do pcall(ev.RegisterEvent, ev, e) end
 ev:RegisterEvent("PLAYER_LOGIN")
 ev:RegisterEvent("SKILL_LINES_CHANGED")
 ev:RegisterEvent("GET_ITEM_INFO_RECEIVED")
@@ -2751,7 +3261,7 @@ ev:SetScript("OnEvent", function(_, event)
             pcall(ns.RegisterCompartment)
         end
     elseif event == "BAG_UPDATE_DELAYED" then
-        if P and P.track then Tracker:Refresh() end
+        if P and ((P.tracks and #P.tracks > 0) or P.track) then Tracker:Soon() end
         if UI.frame and UI.frame:IsShown() and UI.top == "sim" and not pending then
             pending = true
             C_Timer.After(0.3, function() pending = false UI:Refresh() end)
@@ -2764,8 +3274,11 @@ ev:SetScript("OnEvent", function(_, event)
             pending = true
             C_Timer.After(0.4, function() pending = false UI:Refresh() end)
         end
+    elseif event == "TRADE_SKILL_UPDATE" or event == "CRAFT_SHOW" or event == "CRAFT_UPDATE" then
+        ns.Prof.CalibrateSoon()
     elseif event == "TRADE_SKILL_SHOW" then
         if not P and not Setup() then return end
+        ns.Prof.CalibrateSoon()
         local n
         if GetTradeSkillLine then n = GetTradeSkillLine() end
         if C_TradeSkillUI and C_TradeSkillUI.GetBaseProfessionInfo then
@@ -2812,7 +3325,9 @@ local function BuildMM()
     border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
     border:SetPoint("TOPLEFT")
     b:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
-    b:SetScript("OnClick", Safe("minimap button", function() ns.OpenProf() end))
+    b:SetScript("OnClick", Safe("minimap button", function(_, button)
+        if button == "RightButton" and ns.ToggleGather then ns.ToggleGather() else ns.OpenProf() end
+    end))
     b:SetScript("OnDragStart", function(self2)
         self2:SetScript("OnUpdate", function()
             local mx, my = Minimap:GetCenter()
@@ -2828,6 +3343,10 @@ local function BuildMM()
         GameTooltip:SetOwner(self2, "ANCHOR_LEFT")
         GameTooltip:SetText(S.TITLE, 1, 0.82, 0)
         GameTooltip:AddLine(S.MM_TIP, 1, 1, 1)
+        if ns.GatherOn then
+            local on = ns.GatherOn()
+            GameTooltip:AddLine(on and S.MM_GATHER_ON or S.MM_GATHER_OFF, on and 0.3 or 1, on and 1 or 0.3, 0.3)
+        end
         GameTooltip:Show()
     end)
     b:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -2843,21 +3362,30 @@ function ns.UpdateProfMinimap()
     local DBI = LS and LS("LibDBIcon-1.0", true)
     if LDB and DBI then
         if not ns.ldbObj then
-            ns.ldbObj = LDB:NewDataObject("TrailsmithProf", {
+            ns.ldbObj = LDB:NewDataObject("Trailsmith", {
                 type = "launcher", text = S.TITLE, icon = ICON,
-                OnClick = function() ns.OpenProf() end,
-                OnTooltipShow = function(tt) tt:AddLine(S.TITLE, 1, 0.82, 0) tt:AddLine(S.MM_TIP, 1, 1, 1) end,
+                OnClick = function(_, button)
+                    if button == "RightButton" and ns.ToggleGather then ns.ToggleGather() else ns.OpenProf() end
+                end,
+                OnTooltipShow = function(tt)
+                    tt:AddLine(S.TITLE, 1, 0.82, 0)
+                    tt:AddLine(S.MM_TIP, 1, 1, 1)
+                    if ns.GatherOn then
+                        local on = ns.GatherOn()
+                        tt:AddLine(on and S.MM_GATHER_ON or S.MM_GATHER_OFF, on and 0.3 or 1, on and 1 or 0.3, 0.3)
+                    end
+                end,
             })
             P.ldb = P.ldb or {}
-            DBI:Register("TrailsmithProf", ns.ldbObj, P.ldb)
+            DBI:Register("Trailsmith", ns.ldbObj, P.ldb)
             Log("registered with LibDBIcon")
         end
-        if P.mmHide then DBI:Hide("TrailsmithProf") else DBI:Show("TrailsmithProf") end
+        if P.mmHide or (ns.MinimapHidden and ns.MinimapHidden()) then DBI:Hide("Trailsmith") else DBI:Show("Trailsmith") end
         if mm then mm:Hide() end
         return
     end
     BuildMM()
-    if mm then if P.mmHide then mm:Hide() else mm:Show() end end
+    if mm then if P.mmHide or (ns.MinimapHidden and ns.MinimapHidden()) then mm:Hide() else mm:Show() end end
 end
 function ns.RegisterCompartment()
     local c = _G.AddonCompartmentFrame
